@@ -6,6 +6,7 @@ const lightTheme = {
   border: "#343536",
   primary: "#edeeef",
   secondary: "#fff",
+  warning: "rgb(224, 36, 94)", //red
 };
 
 export default lightTheme;

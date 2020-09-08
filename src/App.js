@@ -14,7 +14,7 @@ function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   return (
-    <ThemeProvider theme={themes.light}>
+    <ThemeProvider theme={themes.dark}>
       <GlobalStyle />
       <Router history={history}>
         {isLoggedIn ? (

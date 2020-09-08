@@ -2,16 +2,71 @@ import React from "react";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import * as Yup from "yup";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import { login } from "../actions/authActions";
+
+const Container = styled.div`
+  height: 100vh;
+  background-color: ${(props) => props.theme.backgroundPrimary};
+  color: ${(props) => props.theme.primary};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledForm = styled.form`
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  color: ${(props) => props.theme.primary};
+  width: 50%;
+`;
+
+const StyledInput = styled.input`
+  background-color: ${(props) => props.theme.backgroundSecondary};
+  border: 1px solid ${(props) => props.theme.border};
+  color: ${(props) => props.theme.primary};
+  height: 2rem;
+  margin: 0.4rem 0;
+`;
+
+const StyledText = styled.span`
+  color: ${(props) => props.theme.warning};
+`;
+
+const StyledButton = styled.button`
+  background-color: ${(props) => props.theme.backgroundButton};
+  border: 2px solid ${(props) => props.theme.backgroundButton};
+  border-radius: 10px;
+  width: 14rem;
+  height: 2rem;
+  font-size: 1rem;
+  margin: 0.6rem 0;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const StyledLink = styled(Link)`
+  margin-left: 0.4rem;
+  color: ${(props) => props.theme.warning};
+  text-decoration: none;
+`;
+
+const StyledHeader = styled.h2`
+  margin-top: 2rem;
+  margin-bottom: 0;
+`;
 
 function LogIn() {
   const dispatch = useDispatch();
 
   const validationSchema = Yup.object().shape({
-    password: Yup.string()
-      .min(5, "Must be at least 5 characters long")
-      .required("Required"),
+    password: Yup.string().required("Required"),
     email: Yup.string().email("Invalid email address").required("Required"),
   });
 
@@ -27,10 +82,15 @@ function LogIn() {
   });
 
   return (
-    <div>
-      <form onSubmit={formik.handleSubmit}>
+    <Container>
+      <StyledHeader>Log in</StyledHeader>
+      <Wrapper>
+        <p>Don’t have an account yet?</p>
+        <StyledLink to="/signup">Sign up</StyledLink>
+      </Wrapper>
+      <StyledForm onSubmit={formik.handleSubmit}>
         <label htmlFor="email">Email</label>
-        <input
+        <StyledInput
           type="email"
           name="email"
           id="email"
@@ -39,10 +99,10 @@ function LogIn() {
           value={formik.values.email}
         />
         {formik.errors.email && formik.touched.email ? (
-          <p>{formik.errors.email}</p>
+          <StyledText>{formik.errors.email}</StyledText>
         ) : null}
         <label htmlFor="password">Password</label>
-        <input
+        <StyledInput
           type="password"
           name="password"
           id="password"
@@ -51,13 +111,13 @@ function LogIn() {
           value={formik.values.password}
         />
         {formik.errors.password && formik.touched.password ? (
-          <p>{formik.errors.password}</p>
+          <StyledText>{formik.errors.password}</StyledText>
         ) : null}
-        <button type="submit" onClick={formik.handleSubmit}>
+        <StyledButton type="submit" onClick={formik.handleSubmit}>
           Log in
-        </button>
-      </form>
-    </div>
+        </StyledButton>
+      </StyledForm>
+    </Container>
   );
 }
 

@@ -1,3 +1,3 @@
-import light from "./lightTheme";
+import dark from "./darkTheme";
 
-export default { light };
+export default { dark };

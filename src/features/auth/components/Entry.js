@@ -9,7 +9,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.theme.backgroundSecondary};
+  background-color: ${(props) => props.theme.backgroundPrimary};
 `;
 
 const Wrapper = styled.div`
@@ -32,8 +32,8 @@ const StyledButton = styled.button`
 `;
 
 const StyledButtonDark = styled(StyledButton)`
-  background-color: ${(props) => props.theme.backgroundSecondary};
-  color: ${(props) => props.theme.backgroundButton};
+  background-color: ${(props) => props.theme.backgroundPrimary};
+  color: ${(props) => props.theme.primary};
 `;
 
 function Entry() {
