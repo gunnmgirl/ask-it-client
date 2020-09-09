@@ -25,8 +25,6 @@ function Hot() {
   const page = useSelector((state) => state.user.page);
   const dispatch = useDispatch();
 
-  console.log(users);
-
   React.useEffect(() => {
     dispatch(getMostPopular({ page }));
   }, [dispatch, page]);

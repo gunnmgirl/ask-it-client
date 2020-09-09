@@ -10,6 +10,7 @@ import LogIn from "./features/auth/components/LogIn";
 import Latest from "./features/questions/components/Latest";
 import Popular from "./features/user/components/Popular";
 import Hot from "./features/questions/components/Hot";
+import QuestionDetails from "./features/questions/components/QuestionDetails";
 
 import themes from "./themes";
 import GlobalStyle from "./GlobalStyle";
@@ -27,6 +28,7 @@ function App() {
             <Route path="/signup" component={SignUp} />
             <Route path="/hot" component={Hot} />
             <Route path="/popular" component={Popular} />
+            <Route path="/:questionId" component={QuestionDetails} />
             <Route path="/" exact component={Latest} />
           </Switch>
         ) : (

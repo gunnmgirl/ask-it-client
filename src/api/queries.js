@@ -16,6 +16,10 @@ function getHotQuestions(payload) {
   });
 }
 
+function getQuestion(payload) {
+  return axios.get(`/question/${payload}`);
+}
+
 function getMostPopular(payload) {
   return axios.get("/user/popular", {
     params: {
@@ -28,6 +32,7 @@ export default {
   getLatestQuestions,
   getHotQuestions,
   getMostPopular,
+  getQuestion,
 };
 
-export { getLatestQuestions, getHotQuestions, getMostPopular };
+export { getLatestQuestions, getHotQuestions, getMostPopular, getQuestion };

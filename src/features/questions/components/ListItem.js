@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ThumbsUp, ThumbsDown, MessageSquare } from "react-feather";
+import { useHistory } from "react-router-dom";
 
 const Container = styled.div`
   border: 0.1rem solid ${(props) => props.theme.backgroundPrimary};
@@ -54,10 +55,11 @@ const Content = styled.div`
 
 function ListItem(props) {
   const { question } = props;
+  const history = useHistory();
 
   return (
     <Container>
-      <Content>
+      <Content onClick={() => history.push(`/${question._id}`)}>
         <StyledText>{question.body}</StyledText>
       </Content>
       <Info>
