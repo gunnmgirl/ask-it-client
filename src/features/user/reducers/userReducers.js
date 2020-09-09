@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   loading: false,
   error: false,
+  page: 0,
   users: [],
   totalUsers: 0,
 };
@@ -12,7 +13,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         error: false,
-        users: [...state.users, action.payload.users],
+        users: action.payload.users,
         totalUsers: action.payload.totalUsers,
       };
     case "GET_MOST_POPULAR_FAILURE":
