@@ -8,6 +8,8 @@ import {
   getLatestQuestions,
 } from "../actions/questionsActions";
 
+import { getMostPopular } from "../../user/actions/userActions";
+
 const Container = styled.div`
   display: flex;
   align-items: center;
@@ -25,6 +27,7 @@ function SubHeader() {
     <Container>
       <Home onClick={() => dispatch(getLatestQuestions({ page }))} />
       <Home onClick={() => dispatch(getHotQuestions({ page }))} />
+      <Home onClick={() => dispatch(getMostPopular({ page }))} />
     </Container>
   );
 }
