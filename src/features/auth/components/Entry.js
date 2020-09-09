@@ -17,8 +17,8 @@ const Wrapper = styled.div`
 `;
 
 const StyledText = styled.span`
-  font-weight: 700;
-  margin-left: 0.6rem;
+  color: ${(props) => props.theme.warning};
+  margin-left: 0.4rem;
 `;
 
 const StyledButton = styled.button`
