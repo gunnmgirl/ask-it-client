@@ -1,9 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Home, User } from "react-feather";
-import { useDispatch, useSelector } from "react-redux";
-
-import { getLatestQuestions } from "../actions/questionsActions";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -28,19 +26,19 @@ const StyledHeader = styled.h1`
   margin: 0.5rem 0;
 `;
 
+const StyledLink = styled(Link)`
+  color: ${(props) => props.theme.primary};
+  text-decoration: none;
+`;
+
 function Header() {
-  const dispatch = useDispatch();
-  const page = useSelector((state) => state.questions.page);
-
-  React.useEffect(() => {
-    dispatch(getLatestQuestions({ page }));
-  }, [dispatch, page]);
-
   return (
     <Container>
       <StyledHeader>Ask it</StyledHeader>
       <Wrapper>
-        <Home onClick={() => dispatch(getLatestQuestions())} />
+        <StyledLink to="/">
+          <Home />
+        </StyledLink>
         <StyledUserIcon />
       </Wrapper>
     </Container>

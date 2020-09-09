@@ -15,7 +15,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         error: false,
-        questions: [...state.questions, action.payload.questions],
+        questions: action.payload.questions,
         totalQuestions: action.payload.totalQuestions,
       };
     case "GET_HOT_QUESTIONS_FAILURE":
@@ -23,7 +23,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         error: false,
-        questions: [...state.questions, action.payload.questions],
+        questions: action.payload.questions,
         totalQuestions: action.payload.totalQuestions,
       };
     case "GET_LATEST_QUESTIONS_SUCCESS":
@@ -31,7 +31,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         error: false,
-        questions: [...state.questions, action.payload.questions],
+        questions: action.payload.questions,
         totalQuestions: action.payload.totalQuestions,
       };
     case "GET_LATEST_QUESTIONS_FAILURE":

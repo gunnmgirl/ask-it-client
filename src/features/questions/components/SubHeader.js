@@ -1,33 +1,25 @@
 import React from "react";
 import styled from "styled-components";
-import { Home } from "react-feather";
-import { useDispatch, useSelector } from "react-redux";
-
-import {
-  getHotQuestions,
-  getLatestQuestions,
-} from "../actions/questionsActions";
-
-import { getMostPopular } from "../../user/actions/userActions";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
+  justify-content: space-between;
   align-items: center;
+  padding: 0.4rem 24rem;
+`;
+
+const StyledLink = styled(Link)`
+  color: ${(props) => props.theme.primary};
+  text-decoration: none;
 `;
 
 function SubHeader() {
-  const dispatch = useDispatch();
-  const page = useSelector((state) => state.questions.page);
-
-  React.useEffect(() => {
-    dispatch(getLatestQuestions({ page }));
-  }, [dispatch, page]);
-
   return (
     <Container>
-      <Home onClick={() => dispatch(getLatestQuestions({ page }))} />
-      <Home onClick={() => dispatch(getHotQuestions({ page }))} />
-      <Home onClick={() => dispatch(getMostPopular({ page }))} />
+      <StyledLink to="/">Latest</StyledLink>
+      <StyledLink to="/popular">Popular</StyledLink>
+      <StyledLink to="/hot">Hot Questions</StyledLink>
     </Container>
   );
 }
