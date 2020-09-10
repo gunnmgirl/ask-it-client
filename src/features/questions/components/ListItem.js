@@ -73,7 +73,7 @@ function ListItem(props) {
         </Wrapper>
         <Wrapper>
           <MessageSquare size="20" strokeWidth="1.5" />
-          <StyledNumber>{22}</StyledNumber>
+          <StyledNumber>{question.answers.length}</StyledNumber>
         </Wrapper>
       </Info>
     </Container>

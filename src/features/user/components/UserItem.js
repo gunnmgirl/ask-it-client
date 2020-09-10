@@ -40,7 +40,7 @@ function ListItem(props) {
       </Wrapper>
       <StyledWrapper>
         <MessageSquare />
-        <StyledText>{22}</StyledText>
+        <StyledText>{user.length}</StyledText>
       </StyledWrapper>
     </Container>
   );

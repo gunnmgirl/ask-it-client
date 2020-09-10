@@ -16,7 +16,7 @@ function getHotQuestions(payload) {
   });
 }
 
-function getQuestion(payload) {
+function getQuestionAndAnswers(payload) {
   return axios.get(`/question/${payload}`);
 }
 
@@ -32,7 +32,12 @@ export default {
   getLatestQuestions,
   getHotQuestions,
   getMostPopular,
-  getQuestion,
+  getQuestionAndAnswers,
 };
 
-export { getLatestQuestions, getHotQuestions, getMostPopular, getQuestion };
+export {
+  getLatestQuestions,
+  getHotQuestions,
+  getMostPopular,
+  getQuestionAndAnswers,
+};

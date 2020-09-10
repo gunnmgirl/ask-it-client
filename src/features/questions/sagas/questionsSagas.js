@@ -33,13 +33,13 @@ function* postAnswer(action) {
   }
 }
 
-function* getQuestion(action) {
+function* getQuestionAndAnswers(action) {
   try {
-    const data = yield call(queries.getQuestion, action.payload);
+    const data = yield call(queries.getQuestionAndAnswers, action.payload);
     const result = data.data;
-    yield put({ type: "GET_QUESTION_SUCCESS", payload: result });
+    yield put({ type: "GET_QUESTION_AND_ANSWERS_SUCCESS", payload: result });
   } catch (error) {
-    yield put({ type: "GET_QUESTION_FAILURE", error });
+    yield put({ type: "GET_QUESTION_AND_ANSWERS_FAILURE", error });
   }
 }
 
@@ -47,7 +47,7 @@ const saga = function* () {
   yield takeLatest("GET_LATEST_QUESTIONS_REQUEST", getLatestQuestions);
   yield takeLatest("GET_HOT_QUESTIONS_REQUEST", getHotQuestions);
   yield takeLatest("POST_ANSWER_REQUEST", postAnswer);
-  yield takeLatest("GET_QUESTION_REQUEST", getQuestion);
+  yield takeLatest("GET_QUESTION_AND_ANSWERS_REQUEST", getQuestionAndAnswers);
 };
 
 export default saga;

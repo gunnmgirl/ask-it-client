@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 
-import { getQuestion } from "../actions/questionsActions";
+import { getQuestionAndAnswers } from "../actions/questionsActions";
 import ListItem from "./ListItem";
 import AnswerForm from "./AnswerForm";
 import Header from "./Header";
@@ -29,27 +29,27 @@ const Answers = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
 `;
 
 const Answer = styled.div`
-  width: 50%;
+  width: 12rem;
   min-height: 4rem;
   height: auto;
-  border: 0.1rem solid ${(props) => props.theme.border};
+  border: 0.1rem solid ${(props) => props.theme.backgroundPrimary};
   border-radius: 5px;
   background-color: ${(props) => props.theme.backgroundSecondary};
+  color: ${(props) => props.theme.primary};
   text-align: center;
   margin: 0.2rem 0;
 `;
 
-function PostDetails() {
+function QuestionDetails() {
   const question = useSelector((state) => state.questions.question);
   const dispatch = useDispatch();
   const { questionId } = useParams();
 
   React.useEffect(() => {
-    dispatch(getQuestion(questionId));
+    dispatch(getQuestionAndAnswers(questionId));
   }, [dispatch, questionId]);
 
   return (
@@ -58,10 +58,16 @@ function PostDetails() {
       <Container>
         <ListItem question={question} key={question._id} />
         <AnswerForm />
-        <Answers></Answers>
+        <Answers>
+          {question.answers.map((answer) => (
+            <Answer key={answer._id}>
+              <p>{answer.body}</p>
+            </Answer>
+          ))}
+        </Answers>
       </Container>
     </MainContainer>
   );
 }
 
-export default PostDetails;
+export default QuestionDetails;

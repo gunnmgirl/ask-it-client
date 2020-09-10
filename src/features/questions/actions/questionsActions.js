@@ -19,9 +19,9 @@ export const postAnswer = (payload) => {
   };
 };
 
-export const getQuestion = (payload) => {
+export const getQuestionAndAnswers = (payload) => {
   return {
-    type: "GET_QUESTION_REQUEST",
+    type: "GET_QUESTION_AND_ANSWERS_REQUEST",
     payload,
   };
 };

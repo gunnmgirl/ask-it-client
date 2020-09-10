@@ -15,14 +15,17 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "GET_QUESTION_SUCCESS":
+    case "GET_QUESTION_AND_ANSWERS_SUCCESS":
       return {
         ...state,
         loading: false,
         error: false,
-        question: action.payload,
+        question: {
+          ...action.payload.question,
+          answers: action.payload.answers,
+        },
       };
-    case "GET_QUESTION_FAILURE":
+    case "GET_QUESTION_AND_ANSWERS_FAILURE":
       return {
         ...state,
         loading: false,
