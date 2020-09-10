@@ -25,7 +25,7 @@ function* login(action) {
     localStorage.setItem("token", result.token);
     formik.setSubmitting(false);
     history.push("/");
-    yield put({ type: "LOGIN_SUCCESS", payload: result.user });
+    yield put({ type: "LOGIN_SUCCESS", payload: result.userId });
   } catch (error) {
     formik.setFieldError("password", error.data);
     formik.setSubmitting(false);

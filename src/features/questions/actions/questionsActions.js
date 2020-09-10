@@ -31,3 +31,10 @@ export const loadMoreQuestions = () => {
     type: "LOAD_MORE_QUESTIONS",
   };
 };
+
+export const deleteAnswer = (payload) => {
+  return {
+    type: "DELETE_ANSWER_REQUEST",
+    payload,
+  };
+};

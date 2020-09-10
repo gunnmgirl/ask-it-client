@@ -33,6 +33,16 @@ function* postAnswer(action) {
   }
 }
 
+function* deleteAnswer(action) {
+  try {
+    const data = yield call(mutations.deleteAnswer, action.payload);
+    const result = data.data;
+    yield put({ type: "DELETE_ANSWER_SUCCESS", payload: result });
+  } catch (error) {
+    yield put({ type: "DELETE_ANSWER_FAILURE", error });
+  }
+}
+
 function* getQuestionAndAnswers(action) {
   try {
     const data = yield call(queries.getQuestionAndAnswers, action.payload);
@@ -47,6 +57,7 @@ const saga = function* () {
   yield takeLatest("GET_LATEST_QUESTIONS_REQUEST", getLatestQuestions);
   yield takeLatest("GET_HOT_QUESTIONS_REQUEST", getHotQuestions);
   yield takeLatest("POST_ANSWER_REQUEST", postAnswer);
+  yield takeLatest("DELETE_ANSWER_REQUEST", deleteAnswer);
   yield takeLatest("GET_QUESTION_AND_ANSWERS_REQUEST", getQuestionAndAnswers);
 };
 

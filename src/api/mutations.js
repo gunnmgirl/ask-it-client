@@ -12,10 +12,20 @@ function postAnswer(payload) {
   return axios.post("/answer", payload);
 }
 
+function deleteAnswer(payload) {
+  return axios.delete("/answer", {
+    params: {
+      questionId: payload.questionId,
+      answerId: payload.answerId,
+    },
+  });
+}
+
 export default {
   signup,
   postAnswer,
   login,
+  deleteAnswer,
 };
 
 export { signup, login, postAnswer };

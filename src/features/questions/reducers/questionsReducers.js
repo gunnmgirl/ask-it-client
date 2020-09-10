@@ -47,6 +47,24 @@ export default (state = INITIAL_STATE, action) => {
         loading: false,
         error: true,
       };
+    case "DELETE_ANSWER_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        question: {
+          ...state.question,
+          answers: state.question.answers.filter(
+            (answer) => answer._id !== action.payload
+          ),
+        },
+      };
+    case "DELETE_ANSWER_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
     case "LOAD_MORE_QUESTIONS":
       return { ...state, page: state.page + 1 };
     case "GET_HOT_QUESTIONS_SUCCESS":

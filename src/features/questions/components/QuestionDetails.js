@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 
-import { getQuestionAndAnswers } from "../actions/questionsActions";
+import {
+  getQuestionAndAnswers,
+  deleteAnswer,
+} from "../actions/questionsActions";
 import ListItem from "./ListItem";
 import AnswerForm from "./AnswerForm";
 import Header from "./Header";
@@ -43,8 +46,13 @@ const Answer = styled.div`
   margin: 0.2rem 0;
 `;
 
+const Wrapper = styled.div`
+  display: flex;
+`;
+
 function QuestionDetails() {
   const question = useSelector((state) => state.questions.question);
+  const me = useSelector((state) => state.user.me);
   const dispatch = useDispatch();
   const { questionId } = useParams();
 
@@ -60,9 +68,27 @@ function QuestionDetails() {
         <AnswerForm />
         <Answers>
           {question.answers.map((answer) => (
-            <Answer key={answer._id}>
-              <p>{answer.body}</p>
-            </Answer>
+            <>
+              {me === answer.createdBy ? (
+                <Wrapper>
+                  <button
+                    onClick={() =>
+                      dispatch(
+                        deleteAnswer({
+                          answerId: answer._id,
+                          questionId: question._id,
+                        })
+                      )
+                    }
+                  >
+                    Delete
+                  </button>
+                </Wrapper>
+              ) : null}
+              <Answer>
+                <p>{answer.body}</p>
+              </Answer>
+            </>
           ))}
         </Answers>
       </Container>
