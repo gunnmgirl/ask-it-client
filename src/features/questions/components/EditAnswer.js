@@ -3,9 +3,8 @@ import styled from "styled-components";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
 
-import { postAnswer } from "../actions/questionsActions";
+import { editAnswer } from "../actions/questionsActions";
 
 const StyledForm = styled.form`
   margin: 0.2rem 0;
@@ -20,8 +19,9 @@ const StyledButton = styled.button`
   border-radius: 5px;
   height: 1.8rem;
   width: 4rem;
-  color: ${(props) => props.theme.backgroundPrimary};
-  background-color: ${(props) => props.theme.warning};
+  color: ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.backgroundPrimary};
+  margin: 0 0.2rem;
 `;
 
 const StyledTextarea = styled.textarea`
@@ -37,9 +37,13 @@ const StyledTextarea = styled.textarea`
   border-radius: 5px;
 `;
 
-function AnswerForm() {
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+function EditAnswer({ answerId, handleOnSubmit, initialValue }) {
   const dispatch = useDispatch();
-  const { questionId } = useParams();
 
   const validationSchema = Yup.object().shape({
     body: Yup.string()
@@ -49,11 +53,12 @@ function AnswerForm() {
 
   const formik = useFormik({
     initialValues: {
-      body: "",
+      body: initialValue,
     },
     onSubmit: (values, { resetForm }) => {
-      dispatch(postAnswer({ values, questionId }));
+      dispatch(editAnswer({ values, answerId }));
       resetForm({ values: "" });
+      handleOnSubmit();
     },
     validationSchema,
   });
@@ -61,17 +66,20 @@ function AnswerForm() {
   return (
     <StyledForm onSubmit={formik.handleSubmit}>
       <StyledTextarea
-        placeholder="Leave your answer.."
+        autoFocus={true}
         name="body"
         onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
         value={formik.values.body}
+        onBlur={formik.handleBlur}
       />
-      <StyledButton type="submit" onClick={formik.handleSubmit}>
-        Answer
-      </StyledButton>
+      <Wrapper>
+        <StyledButton type="submit" onClick={formik.handleSubmit}>
+          Edit
+        </StyledButton>
+        <StyledButton onClick={handleOnSubmit}>Cancel</StyledButton>
+      </Wrapper>
     </StyledForm>
   );
 }
 
-export default AnswerForm;
+export default EditAnswer;

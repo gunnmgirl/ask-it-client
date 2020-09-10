@@ -12,6 +12,10 @@ function postAnswer(payload) {
   return axios.post("/answer", payload);
 }
 
+function editAnswer(payload) {
+  return axios.post("/answer/edit", payload);
+}
+
 function deleteAnswer(payload) {
   return axios.delete("/answer", {
     params: {
@@ -26,6 +30,7 @@ export default {
   postAnswer,
   login,
   deleteAnswer,
+  editAnswer,
 };
 
-export { signup, login, postAnswer };
+export { signup, login, postAnswer, deleteAnswer, editAnswer };

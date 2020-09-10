@@ -47,6 +47,27 @@ export default (state = INITIAL_STATE, action) => {
         loading: false,
         error: true,
       };
+    case "EDIT_ANSWER_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        question: {
+          ...state.question,
+          answers: state.question.answers.map(
+            ((answer) =>
+              answer._id !== action.payload.answerId
+                ? answer
+                : { ...answer, body: action.payload.newContent }: answer)
+          ),
+        },
+      };
+    case "EDIT_ANSWER_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
     case "DELETE_ANSWER_SUCCESS":
       return {
         ...state,
