@@ -19,9 +19,11 @@ import GlobalStyle from "./GlobalStyle";
 
 function App() {
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const currentTheme = useSelector((state) => state.theme.theme);
+  const theme = currentTheme === "dark" ? themes.dark : themes.light;
 
   return (
-    <ThemeProvider theme={themes.dark}>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Router history={history}>
         {isLoggedIn ? (

@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Home, User } from "react-feather";
+import { Home, User, Sun, Moon } from "react-feather";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { toggleDark, toggleLight } from "../../../themes/actions/themesActions";
 
 const Container = styled.div`
   display: flex;
@@ -19,7 +21,7 @@ const Wrapper = styled.div`
 `;
 
 const StyledUserIcon = styled(User)`
-  margin-left: 1rem;
+  margin: 0 1rem;
 `;
 
 const StyledHeader = styled.h1`
@@ -34,6 +36,9 @@ const StyledLink = styled(Link)`
 
 function Header() {
   const userId = useSelector((state) => state.auth.userId);
+  const theme = useSelector((state) => state.theme.theme);
+  const dispatch = useDispatch();
+
   return (
     <Container>
       <StyledHeader>Ask it</StyledHeader>
@@ -48,6 +53,19 @@ function Header() {
         >
           <StyledUserIcon />
         </StyledLink>
+        {theme === "light" ? (
+          <Moon
+            onClick={() => {
+              dispatch(toggleDark());
+            }}
+          />
+        ) : (
+          <Sun
+            onClick={() => {
+              dispatch(toggleLight());
+            }}
+          />
+        )}
       </Wrapper>
     </Container>
   );

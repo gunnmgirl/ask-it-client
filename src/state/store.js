@@ -7,6 +7,7 @@ import { saveState, loadState } from "./localStorage";
 
 const initialState = {
   auth: { isLoggedIn: false, userId: null },
+  theme: { theme: "light" },
 };
 
 const persistedState = loadState(initialState);
@@ -22,6 +23,7 @@ const store = createStore(
 store.subscribe(() => {
   saveState({
     auth: store.getState().auth,
+    theme: store.getState().theme,
   });
 });
 
