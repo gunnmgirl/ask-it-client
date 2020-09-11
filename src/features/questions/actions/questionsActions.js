@@ -39,6 +39,20 @@ export const loadMoreQuestions = () => {
   };
 };
 
+export const downvoteAnswer = (payload) => {
+  return {
+    type: "DOWNVOTE_ANSWER_REQUEST",
+    payload,
+  };
+};
+
+export const upvoteAnswer = (payload) => {
+  return {
+    type: "UPVOTE_ANSWER_REQUEST",
+    payload,
+  };
+};
+
 export const getMyQuestions = (payload) => {
   return {
     type: "GET_MY_QUESTIONS_REQUEST",

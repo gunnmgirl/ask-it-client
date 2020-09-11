@@ -27,6 +27,14 @@ function editUser(payload) {
   return axios.post("/user/edit", payload);
 }
 
+function downvoteAnswer(payload) {
+  return axios.post("/answer/downvote", payload);
+}
+
+function upvoteAnswer(payload) {
+  return axios.post("/answer/upvote", payload);
+}
+
 function deleteAnswer(payload) {
   return axios.delete("/answer", {
     params: {
@@ -44,7 +52,9 @@ export default {
   login,
   deleteAnswer,
   editAnswer,
+  upvoteAnswer,
   changePassword,
+  downvoteAnswer,
 };
 
 export {
@@ -55,4 +65,6 @@ export {
   editAnswer,
   changePassword,
   postQuestion,
+  upvoteAnswer,
+  downvoteAnswer,
 };

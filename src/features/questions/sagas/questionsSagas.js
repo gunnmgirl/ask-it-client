@@ -33,6 +33,26 @@ function* getMyQuestions(action) {
   }
 }
 
+function* downvoteAnswer(action) {
+  try {
+    const data = yield call(mutations.downvoteAnswer, action.payload);
+    const result = data.data;
+    yield put({ type: "DOWNVOTE_ANSWER_SUCCESS", payload: result });
+  } catch (error) {
+    yield put({ type: "DOWNVOTE_ANSWER_FAILURE", error });
+  }
+}
+
+function* upvoteAnswer(action) {
+  try {
+    const data = yield call(mutations.upvoteAnswer, action.payload);
+    const result = data.data;
+    yield put({ type: "UPVOTE_ANSWER_SUCCESS", payload: result });
+  } catch (error) {
+    yield put({ type: "UPVOTE_ANSWER_FAILURE", error });
+  }
+}
+
 function* postAnswer(action) {
   try {
     const data = yield call(mutations.postAnswer, action.payload);
@@ -92,6 +112,8 @@ const saga = function* () {
   yield takeLatest("DELETE_ANSWER_REQUEST", deleteAnswer);
   yield takeLatest("GET_QUESTION_AND_ANSWERS_REQUEST", getQuestionAndAnswers);
   yield takeLatest("GET_MY_QUESTIONS_REQUEST", getMyQuestions);
+  yield takeLatest("DOWNVOTE_ANSWER_REQUEST", downvoteAnswer);
+  yield takeLatest("UPVOTE_ANSWER_REQUEST", upvoteAnswer);
 };
 
 export default saga;

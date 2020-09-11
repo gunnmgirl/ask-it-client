@@ -15,6 +15,50 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case "UPVOTE_ANSWER_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        question: {
+          ...state.question,
+          answers: state.question.answers.map((answer) => {
+            if (answer._id === action.payload.answerId) {
+              answer.upvotes.count = action.payload.upvotes;
+              answer.downvotes.count = action.payload.downvotes;
+            }
+            return answer;
+          }),
+        },
+      };
+    case "UPVOTE_ANSWER_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    case "DOWNVOTE_ANSWER_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        question: {
+          ...state.question,
+          answers: state.question.answers.map((answer) => {
+            if (answer._id === action.payload.answerId) {
+              answer.upvotes.count = action.payload.upvotes;
+              answer.downvotes.count = action.payload.downvotes;
+            }
+            return answer;
+          }),
+        },
+      };
+    case "DOWNVOTE_ANSWER_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
     case "GET_MY_QUESTIONS_SUCCESS":
       return {
         ...state,
@@ -80,6 +124,21 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         error: true,
+      };
+    case "EDIT_ANSWER_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        question: {
+          ...state.question,
+          answers: state.question.answers.map((answer) => {
+            if (answer._id === action.payload.answerId) {
+              answer.body = action.payload.newContent;
+            }
+            return answer;
+          }),
+        },
       };
     case "DELETE_ANSWER_SUCCESS":
       return {

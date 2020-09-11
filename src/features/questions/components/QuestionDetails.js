@@ -11,6 +11,7 @@ import ListItem from "./ListItem";
 import AnswerForm from "./AnswerForm";
 import Header from "./Header";
 import EditAnswer from "./EditAnswer";
+import Answer from "./Answer";
 
 const MainContainer = styled.div`
   background-color: ${(props) => props.theme.backgroundPrimary};
@@ -35,20 +36,15 @@ const Answers = styled.div`
   align-items: center;
 `;
 
-const Answer = styled.div`
-  color: ${(props) => props.theme.primary};
-  text-align: center;
-`;
-
 const Wrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
 
 const MainWrapper = styled.div`
-  width: 16rem;
+  width: 22rem;
   margin: 0.2rem 0;
-  min-height: 5rem;
+  min-height: 4rem;
   height: auto;
   background-color: ${(props) => props.theme.backgroundSecondary};
   border: 0.1rem solid ${(props) => props.theme.backgroundPrimary};
@@ -113,17 +109,15 @@ function QuestionDetails() {
                   </StyledButton>
                 </Wrapper>
               ) : null}
-              <Answer>
-                {isEditing === answer._id ? (
-                  <EditAnswer
-                    answerId={answer._id}
-                    handleOnSubmit={handleOnSubmit}
-                    initialValue={answer.body}
-                  />
-                ) : (
-                  <p>{answer.body}</p>
-                )}
-              </Answer>
+              {isEditing === answer._id ? (
+                <EditAnswer
+                  answerId={answer._id}
+                  handleOnSubmit={handleOnSubmit}
+                  initialValue={answer.body}
+                />
+              ) : (
+                <Answer answer={answer} />
+              )}
             </MainWrapper>
           ))}
         </Answers>
