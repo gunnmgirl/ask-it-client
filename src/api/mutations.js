@@ -12,6 +12,10 @@ function postAnswer(payload) {
   return axios.post("/answer", payload);
 }
 
+function postQuestion(payload) {
+  return axios.post("/question", payload);
+}
+
 function changePassword(payload) {
   return axios.post("/user/changePassword", payload);
 }
@@ -36,10 +40,19 @@ export default {
   signup,
   editUser,
   postAnswer,
+  postQuestion,
   login,
   deleteAnswer,
   editAnswer,
   changePassword,
 };
 
-export { signup, login, postAnswer, deleteAnswer, editAnswer, changePassword };
+export {
+  signup,
+  login,
+  postAnswer,
+  deleteAnswer,
+  editAnswer,
+  changePassword,
+  postQuestion,
+};

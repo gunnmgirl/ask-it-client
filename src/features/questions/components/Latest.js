@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Header from "./Header";
 import SubHeader from "./SubHeader";
 import ListItem from "./ListItem";
+import QuestionForm from "./QuestionForm";
 import { getLatestQuestions } from "../actions/questionsActions";
 
 const MainContainer = styled.div`
@@ -17,7 +18,7 @@ const MainContainer = styled.div`
 const List = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2rem 24rem;
+  padding: 0 24rem;
   align-items: center;
 `;
 
@@ -34,6 +35,7 @@ function Latest() {
     <MainContainer>
       <Header />
       <SubHeader />
+      <QuestionForm />
       {questions.length === 0 ? (
         <div>Loading..</div>
       ) : (

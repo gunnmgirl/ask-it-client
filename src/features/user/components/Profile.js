@@ -117,7 +117,7 @@ function Profile() {
                 <StyledText>{me.email}</StyledText>
               </Wrapper>
               <Wrapper>
-                <StyledButton onClick={() => history.push("/")}>
+                <StyledButton onClick={() => history.push("/myQuestions")}>
                   My Questions
                 </StyledButton>
                 <StyledButton onClick={() => setIsChanging(true)}>

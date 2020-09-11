@@ -39,9 +39,23 @@ export const loadMoreQuestions = () => {
   };
 };
 
+export const getMyQuestions = (payload) => {
+  return {
+    type: "GET_MY_QUESTIONS_REQUEST",
+    payload,
+  };
+};
+
 export const deleteAnswer = (payload) => {
   return {
     type: "DELETE_ANSWER_REQUEST",
+    payload,
+  };
+};
+
+export const postQuestion = (payload) => {
+  return {
+    type: "POST_QUESTION_REQUEST",
     payload,
   };
 };

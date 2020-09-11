@@ -11,6 +11,7 @@ import Latest from "./features/questions/components/Latest";
 import Popular from "./features/user/components/Popular";
 import Profile from "./features/user/components/Profile";
 import Hot from "./features/questions/components/Hot";
+import MyQuestions from "./features/questions/components/MyQuestions";
 import QuestionDetails from "./features/questions/components/QuestionDetails";
 
 import themes from "./themes";
@@ -30,6 +31,7 @@ function App() {
             <Route path="/signup" component={SignUp} />
             <Route path="/hot" component={Hot} />
             <Route path="/popular" component={Popular} />
+            <Route path="/myQuestions" component={MyQuestions} />
             <Route path="/:questionId" component={QuestionDetails} />
             <Route path="/" exact component={Latest} />
           </Switch>

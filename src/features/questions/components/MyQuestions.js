@@ -5,8 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Header from "./Header";
 import SubHeader from "./SubHeader";
 import ListItem from "./ListItem";
-import QuestionForm from "./QuestionForm";
-import { getHotQuestions } from "../actions/questionsActions";
+import { getMyQuestions } from "../actions/questionsActions";
 
 const MainContainer = styled.div`
   background-color: ${(props) => props.theme.backgroundPrimary};
@@ -18,24 +17,23 @@ const MainContainer = styled.div`
 const List = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 24rem;
+  padding: 2rem 24rem;
   align-items: center;
 `;
 
-function Hot() {
+function MyQuestions() {
   const questions = useSelector((state) => state.questions.questions);
   const page = useSelector((state) => state.questions.page);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    dispatch(getHotQuestions({ page }));
+    dispatch(getMyQuestions({ page }));
   }, [dispatch, page]);
 
   return (
     <MainContainer>
       <Header />
       <SubHeader />
-      <QuestionForm />
       {questions.length === 0 ? (
         <div>Loading..</div>
       ) : (
@@ -48,4 +46,5 @@ function Hot() {
     </MainContainer>
   );
 }
-export default Hot;
+
+export default MyQuestions;

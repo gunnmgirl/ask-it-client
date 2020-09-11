@@ -15,6 +15,33 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case "GET_MY_QUESTIONS_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        questions: action.payload.questions,
+        totalQuestions: action.payload.totalQuestions,
+      };
+    case "GET_MY_QUESTIONS_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    case "POST_QUESTION_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        questions: [...state.questions, action.payload],
+      };
+    case "POST_QUESTION_FAILURE":
+      return {
+        ...state,
+        error: true,
+        loading: false,
+      };
     case "GET_QUESTION_AND_ANSWERS_SUCCESS":
       return {
         ...state,
@@ -47,21 +74,7 @@ export default (state = INITIAL_STATE, action) => {
         loading: false,
         error: true,
       };
-    case "EDIT_ANSWER_SUCCESS":
-      return {
-        ...state,
-        loading: false,
-        error: false,
-        question: {
-          ...state.question,
-          answers: state.question.answers.map(
-            ((answer) =>
-              answer._id !== action.payload.answerId
-                ? answer
-                : { ...answer, body: action.payload.newContent }: answer)
-          ),
-        },
-      };
+
     case "EDIT_ANSWER_FAILURE":
       return {
         ...state,
@@ -100,9 +113,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         loading: false,
-        error: false,
-        questions: action.payload.questions,
-        totalQuestions: action.payload.totalQuestions,
+        error: true,
       };
     case "GET_LATEST_QUESTIONS_SUCCESS":
       return {
