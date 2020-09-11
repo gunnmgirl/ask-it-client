@@ -90,7 +90,9 @@ function Profile() {
       <MainContainer>
         <Container>
           <StyledUserIcon strokeWidth="1" />
-          {isEditing ? (
+          {!me ? (
+            <div>Loading..</div>
+          ) : isEditing ? (
             <EditProfileForm
               initialValues={{ firstName: me.firstName, lastName: me.lastName }}
               handleOnEdit={handleOnEdit}

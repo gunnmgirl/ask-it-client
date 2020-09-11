@@ -29,6 +29,7 @@ export default (state = INITIAL_STATE, action) => {
         loading: false,
         error: false,
         isLoggedIn: true,
+        userId: action.payload._id,
       };
     case "LOGOUT":
       return {

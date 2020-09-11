@@ -72,7 +72,7 @@ const StyledButtonDark = styled(StyledButton)`
 
 function QuestionDetails() {
   const question = useSelector((state) => state.questions.question);
-  const userId = useSelector((state) => state.user.userId);
+  const userId = useSelector((state) => state.auth.userId);
   const dispatch = useDispatch();
   const { questionId } = useParams();
   const [isEditing, setIsEditing] = React.useState(false);

@@ -6,8 +6,7 @@ import rootSaga from "./rootSaga";
 import { saveState, loadState } from "./localStorage";
 
 const initialState = {
-  auth: { isLoggedIn: false },
-  user: { userId: null },
+  auth: { isLoggedIn: false, userId: null },
 };
 
 const persistedState = loadState(initialState);
@@ -23,7 +22,6 @@ const store = createStore(
 store.subscribe(() => {
   saveState({
     auth: store.getState().auth,
-    user: store.getState().user,
   });
 });
 

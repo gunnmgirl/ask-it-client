@@ -51,18 +51,23 @@ function ChangePasswordForm({ handleOnChange }) {
   const dispatch = useDispatch();
 
   const validationSchema = Yup.object().shape({
+    currentPassword: Yup.string()
+      .required("Required")
+      .min(5, "Must be at least 5 characters long"),
     newPassword: Yup.string()
       .required("Required")
       .min(5, "Must be at least 5 characters long"),
     confirmPassword: Yup.string()
       .required("Required")
-      .min(5, "Must be at least 5 characters long"),
+      .min(5, "Must be at least 5 characters long")
+      .oneOf([Yup.ref("newPassword"), null], "Passwords do not match"),
   });
 
   const formik = useFormik({
     initialValues: {
       newPassword: "",
       confirmPassword: "",
+      currentPassword: "",
     },
     onSubmit: (values) => {
       dispatch(changePassword(values, { formik, handleOnChange }));
@@ -72,6 +77,19 @@ function ChangePasswordForm({ handleOnChange }) {
 
   return (
     <StyledForm onSubmit={formik.handleSubmit}>
+      <label htmlFor="currentPassword">Current Password</label>
+      <StyledInput
+        type="password"
+        name="currentPassword"
+        id="currentPassword"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.currentPassword}
+        autoComplete="new-password"
+      />
+      {formik.errors.currentPassword && formik.touched.currentPassword ? (
+        <StyledText>{formik.errors.currentPassword}</StyledText>
+      ) : null}
       <label htmlFor="newPassword">New Password</label>
       <StyledInput
         type="password"

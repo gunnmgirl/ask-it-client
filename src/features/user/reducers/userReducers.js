@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   page: 0,
   users: [],
   totalUsers: 0,
+  me: null,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -55,6 +56,12 @@ export default (state = INITIAL_STATE, action) => {
         users: action.payload.users,
         totalUsers: action.payload.totalUsers,
       };
+    case "GET_MOST_POPULAR_REQUEST":
+      return {
+        ...state,
+        loading: true,
+        error: false,
+      };
     case "GET_MOST_POPULAR_FAILURE":
       return {
         ...state,
@@ -64,9 +71,9 @@ export default (state = INITIAL_STATE, action) => {
     case "LOGIN_SUCCESS":
       return {
         ...state,
-        userId: action.payload,
         loading: false,
         error: false,
+        me: action.payload,
       };
     default:
       return { ...state };

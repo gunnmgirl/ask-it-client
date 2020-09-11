@@ -9,6 +9,7 @@ import { getMostPopular } from "../actions/userActions";
 
 const MainContainer = styled.div`
   background-color: ${(props) => props.theme.backgroundPrimary};
+  color: ${(props) => props.theme.primary};
   min-height: 100vh;
   height: auto;
 `;
@@ -32,11 +33,15 @@ function Hot() {
     <MainContainer>
       <Header />
       <SubHeader />
-      <List>
-        {users.map((user) => (
-          <UserItem user={user} key={user._id}></UserItem>
-        ))}
-      </List>
+      {users.length === 0 ? (
+        <div>Loading..</div>
+      ) : (
+        <List>
+          {users.map((user) => (
+            <UserItem user={user} key={user._id}></UserItem>
+          ))}
+        </List>
+      )}
     </MainContainer>
   );
 }

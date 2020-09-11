@@ -33,7 +33,7 @@ const StyledLink = styled(Link)`
 `;
 
 function Header() {
-  const userId = useSelector((state) => state.user.userId);
+  const userId = useSelector((state) => state.auth.userId);
   return (
     <Container>
       <StyledHeader>Ask it</StyledHeader>

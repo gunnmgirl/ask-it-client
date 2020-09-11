@@ -9,6 +9,7 @@ import { getLatestQuestions } from "../actions/questionsActions";
 
 const MainContainer = styled.div`
   background-color: ${(props) => props.theme.backgroundPrimary};
+  color: ${(props) => props.theme.primary};
   min-height: 100vh;
   height: auto;
 `;
@@ -33,11 +34,15 @@ function Latest() {
     <MainContainer>
       <Header />
       <SubHeader />
-      <List>
-        {questions.map((question) => (
-          <ListItem question={question} key={question._id}></ListItem>
-        ))}
-      </List>
+      {questions.length === 0 ? (
+        <div>Loading..</div>
+      ) : (
+        <List>
+          {questions.map((question) => (
+            <ListItem question={question} key={question._id}></ListItem>
+          ))}
+        </List>
+      )}
     </MainContainer>
   );
 }
