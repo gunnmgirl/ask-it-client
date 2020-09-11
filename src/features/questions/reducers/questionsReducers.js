@@ -112,6 +112,44 @@ export default (state = INITIAL_STATE, action) => {
           answers: [...state.question.answers, action.payload],
         },
       };
+    case "UPVOTE_QUESTION_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        questions: state.questions.map((question) => {
+          if (question._id === action.payload.questionId) {
+            question.upvotes.count = action.payload.upvotes;
+            question.downvotes.count = action.payload.downvotes;
+          }
+          return question;
+        }),
+      };
+    case "UPVOTE_QUESTION_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    case "DOWNVOTE_QUESTION_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        questions: state.questions.map((question) => {
+          if (question._id === action.payload.questionId) {
+            question.upvotes.count = action.payload.upvotes;
+            question.downvotes.count = action.payload.downvotes;
+          }
+          return question;
+        }),
+      };
+    case "DOWNVOTE_QUESTION_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
     case "POST_ANSWER_FAILURE":
       return {
         ...state,

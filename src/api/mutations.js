@@ -35,6 +35,14 @@ function upvoteAnswer(payload) {
   return axios.post("/answer/upvote", payload);
 }
 
+function downvoteQuestion(payload) {
+  return axios.post("/question/downvote", payload);
+}
+
+function upvoteQuestion(payload) {
+  return axios.post("/question/upvote", payload);
+}
+
 function deleteAnswer(payload) {
   return axios.delete("/answer", {
     params: {
@@ -55,6 +63,8 @@ export default {
   upvoteAnswer,
   changePassword,
   downvoteAnswer,
+  downvoteQuestion,
+  upvoteQuestion,
 };
 
 export {
@@ -67,4 +77,6 @@ export {
   postQuestion,
   upvoteAnswer,
   downvoteAnswer,
+  downvoteQuestion,
+  upvoteQuestion,
 };

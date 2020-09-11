@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { ThumbsUp, ThumbsDown, MessageSquare } from "react-feather";
 import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
+import { upvoteQuestion, downvoteQuestion } from "../actions/questionsActions";
 
 const Container = styled.div`
   border: 0.1rem solid ${(props) => props.theme.backgroundPrimary};
@@ -53,9 +56,9 @@ const Content = styled.div`
   hyphens: auto;
 `;
 
-function ListItem(props) {
-  const { question } = props;
+function ListItem({ question }) {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   return (
     <Container>
@@ -64,12 +67,24 @@ function ListItem(props) {
       </Content>
       <Info>
         <Wrapper>
-          <ThumbsUp size="20" strokeWidth="1.5" />
-          <StyledNumber>{question.upvotes}</StyledNumber>
+          <ThumbsUp
+            size="20"
+            strokeWidth="1.5"
+            onClick={() =>
+              dispatch(upvoteQuestion({ questionId: question._id }))
+            }
+          />
+          <StyledNumber>{question.upvotes.count}</StyledNumber>
         </Wrapper>
         <Wrapper>
-          <ThumbsDown size="20" strokeWidth="1.5" />
-          <StyledNumber>{question.downvotes}</StyledNumber>
+          <ThumbsDown
+            size="20"
+            strokeWidth="1.5"
+            onClick={() =>
+              dispatch(downvoteQuestion({ questionId: question._id }))
+            }
+          />
+          <StyledNumber>{question.downvotes.count}</StyledNumber>
         </Wrapper>
         <Wrapper>
           <MessageSquare size="20" strokeWidth="1.5" />
