@@ -12,8 +12,15 @@ function postAnswer(payload) {
   return axios.post("/answer", payload);
 }
 
+function changePassword(payload) {
+  return axios.post("/user/changePassword", payload);
+}
 function editAnswer(payload) {
   return axios.post("/answer/edit", payload);
+}
+
+function editUser(payload) {
+  return axios.post("/user/edit", payload);
 }
 
 function deleteAnswer(payload) {
@@ -27,10 +34,12 @@ function deleteAnswer(payload) {
 
 export default {
   signup,
+  editUser,
   postAnswer,
   login,
   deleteAnswer,
   editAnswer,
+  changePassword,
 };
 
-export { signup, login, postAnswer, deleteAnswer, editAnswer };
+export { signup, login, postAnswer, deleteAnswer, editAnswer, changePassword };

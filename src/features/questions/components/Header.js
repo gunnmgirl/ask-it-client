@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Home, User } from "react-feather";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
   display: flex;
@@ -32,6 +33,7 @@ const StyledLink = styled(Link)`
 `;
 
 function Header() {
+  const userId = useSelector((state) => state.user.userId);
   return (
     <Container>
       <StyledHeader>Ask it</StyledHeader>
@@ -39,7 +41,13 @@ function Header() {
         <StyledLink to="/">
           <Home />
         </StyledLink>
-        <StyledUserIcon />
+        <StyledLink
+          to={{
+            pathname: `/profile/${userId}`,
+          }}
+        >
+          <StyledUserIcon />
+        </StyledLink>
       </Wrapper>
     </Container>
   );

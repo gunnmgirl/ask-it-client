@@ -8,6 +8,14 @@ function getLatestQuestions(payload) {
   });
 }
 
+function getUser(payload) {
+  return axios.get("/user", {
+    params: {
+      userId: payload,
+    },
+  });
+}
+
 function getHotQuestions(payload) {
   return axios.get("/question/hot", {
     params: {
@@ -33,11 +41,13 @@ export default {
   getHotQuestions,
   getMostPopular,
   getQuestionAndAnswers,
+  getUser,
 };
 
 export {
   getLatestQuestions,
   getHotQuestions,
+  getUser,
   getMostPopular,
   getQuestionAndAnswers,
 };

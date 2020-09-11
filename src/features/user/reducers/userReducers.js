@@ -8,6 +8,45 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case "CHANGE_PASSWORD_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        me: action.payload,
+      };
+    case "CHANGE_PASSWORD_FAILURE":
+      return {
+        ...state,
+        error: true,
+        loading: false,
+      };
+    case "EDIT_USER_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        me: action.payload,
+      };
+    case "EDIT_USER_FAILURE":
+      return {
+        ...state,
+        error: true,
+        loading: false,
+      };
+    case "GET_USER_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        error: false,
+        me: action.payload,
+      };
+    case "GET_USER_FAILURE":
+      return {
+        ...state,
+        error: true,
+        loading: false,
+      };
     case "GET_MOST_POPULAR_SUCCESS":
       return {
         ...state,
@@ -25,7 +64,7 @@ export default (state = INITIAL_STATE, action) => {
     case "LOGIN_SUCCESS":
       return {
         ...state,
-        me: action.payload,
+        userId: action.payload,
         loading: false,
         error: false,
       };

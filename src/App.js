@@ -9,6 +9,7 @@ import SignUp from "./features/auth/components/SignUp";
 import LogIn from "./features/auth/components/LogIn";
 import Latest from "./features/questions/components/Latest";
 import Popular from "./features/user/components/Popular";
+import Profile from "./features/user/components/Profile";
 import Hot from "./features/questions/components/Hot";
 import QuestionDetails from "./features/questions/components/QuestionDetails";
 
@@ -24,6 +25,7 @@ function App() {
       <Router history={history}>
         {isLoggedIn ? (
           <Switch>
+            <Route path="/profile/:userId" component={Profile} />
             <Route path="/login" component={LogIn} />
             <Route path="/signup" component={SignUp} />
             <Route path="/hot" component={Hot} />

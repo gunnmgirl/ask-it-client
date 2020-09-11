@@ -7,7 +7,7 @@ import { saveState, loadState } from "./localStorage";
 
 const initialState = {
   auth: { isLoggedIn: false },
-  user: { me: null },
+  user: { userId: null },
 };
 
 const persistedState = loadState(initialState);

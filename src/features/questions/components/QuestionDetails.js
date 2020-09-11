@@ -72,7 +72,7 @@ const StyledButtonDark = styled(StyledButton)`
 
 function QuestionDetails() {
   const question = useSelector((state) => state.questions.question);
-  const me = useSelector((state) => state.user.me);
+  const userId = useSelector((state) => state.user.userId);
   const dispatch = useDispatch();
   const { questionId } = useParams();
   const [isEditing, setIsEditing] = React.useState(false);
@@ -94,7 +94,7 @@ function QuestionDetails() {
         <Answers>
           {question.answers.map((answer) => (
             <MainWrapper key={answer._id}>
-              {me === answer.createdBy ? (
+              {userId === answer.createdBy ? (
                 <Wrapper>
                   <StyledButtonDark
                     onClick={() =>
