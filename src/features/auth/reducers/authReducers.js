@@ -35,6 +35,7 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         isLoggedIn: false,
+        userId: "",
       };
     default:
       return state;

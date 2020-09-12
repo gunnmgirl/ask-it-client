@@ -15,6 +15,8 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case "CLEAR_PAGE_COUNTER":
+      return { ...state, page: 0, questions: [] };
     case "UPVOTE_ANSWER_SUCCESS":
       return {
         ...state,
@@ -64,7 +66,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         error: false,
-        questions: action.payload.questions,
+        questions: [...state.questions, ...action.payload.questions],
         totalQuestions: action.payload.totalQuestions,
       };
     case "GET_MY_QUESTIONS_FAILURE":
@@ -203,7 +205,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         error: false,
-        questions: action.payload.questions,
+        questions: [...state.questions, ...action.payload.questions],
         totalQuestions: action.payload.totalQuestions,
       };
     case "GET_HOT_QUESTIONS_FAILURE":
@@ -217,7 +219,7 @@ export default (state = INITIAL_STATE, action) => {
         ...state,
         loading: false,
         error: false,
-        questions: action.payload.questions,
+        questions: [...state.questions, ...action.payload.questions],
         totalQuestions: action.payload.totalQuestions,
       };
     case "GET_LATEST_QUESTIONS_FAILURE":

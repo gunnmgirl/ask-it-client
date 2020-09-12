@@ -6,7 +6,11 @@ import Header from "./Header";
 import SubHeader from "./SubHeader";
 import ListItem from "./ListItem";
 import QuestionForm from "./QuestionForm";
-import { getLatestQuestions } from "../actions/questionsActions";
+import LoadMoreButton from "./LoadMoreButton";
+import {
+  getLatestQuestions,
+  clearPageCounter,
+} from "../actions/questionsActions";
 
 const MainContainer = styled.div`
   background-color: ${(props) => props.theme.backgroundPrimary};
@@ -27,10 +31,21 @@ const List = styled.div`
   }
 `;
 
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
 function Latest() {
   const questions = useSelector((state) => state.questions.questions);
   const page = useSelector((state) => state.questions.page);
+  const totalQuestions = useSelector((state) => state.questions.totalQuestions);
   const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(clearPageCounter());
+  }, [dispatch]);
 
   React.useEffect(() => {
     dispatch(getLatestQuestions({ page }));
@@ -44,11 +59,14 @@ function Latest() {
       {questions.length === 0 ? (
         <div>Loading..</div>
       ) : (
-        <List>
-          {questions.map((question) => (
-            <ListItem question={question} key={question._id}></ListItem>
-          ))}
-        </List>
+        <Container>
+          <List>
+            {questions.map((question) => (
+              <ListItem question={question} key={question._id}></ListItem>
+            ))}
+          </List>
+          {questions.length < totalQuestions ? <LoadMoreButton /> : null}
+        </Container>
       )}
     </MainContainer>
   );

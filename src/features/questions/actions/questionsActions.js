@@ -39,6 +39,12 @@ export const loadMoreQuestions = () => {
   };
 };
 
+export const clearPageCounter = () => {
+  return {
+    type: "CLEAR_PAGE_COUNTER",
+  };
+};
+
 export const downvoteAnswer = (payload) => {
   return {
     type: "DOWNVOTE_ANSWER_REQUEST",
