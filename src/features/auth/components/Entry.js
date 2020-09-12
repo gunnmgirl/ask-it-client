@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   color: ${(props) => props.theme.primary};
   flex-direction: column;
   justify-content: center;

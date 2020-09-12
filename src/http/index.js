@@ -1,6 +1,8 @@
 import axios from "axios";
 
 import history from "../routing/history";
+import { logout } from "../features/auth/actions/authActions";
+import store from "../state/store";
 
 const instance = axios.create({
   baseURL: "http://localhost:4000",
@@ -22,8 +24,10 @@ instance.interceptors.response.use(
   },
   (error) => {
     if (error.response.status === 401) {
+      const { dispatch } = store;
+      dispatch(logout());
       localStorage.removeItem("token");
-      history.push("/login");
+      history.push("/");
     }
     return Promise.reject(error.response);
   }
