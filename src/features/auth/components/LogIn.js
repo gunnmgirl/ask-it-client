@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import { login } from "../actions/authActions";
 
 const Container = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   background-color: ${(props) => props.theme.backgroundPrimary};
   color: ${(props) => props.theme.primary};
   display: flex;

@@ -11,14 +11,19 @@ const MainContainer = styled.div`
   background-color: ${(props) => props.theme.backgroundPrimary};
   color: ${(props) => props.theme.primary};
   min-height: 100vh;
-  height: auto;
 `;
 
 const List = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2rem 24rem;
+  padding: 0 6rem;
   align-items: center;
+  @media (min-width: 768px) {
+    padding: 0 16rem;
+  }
+  @media (min-width: 992px) {
+    padding: 0 24rem;
+  }
 `;
 
 function MyQuestions() {

@@ -11,17 +11,28 @@ import ChangePasswordForm from "./ChangePasswordForm";
 import { getUser } from "../actions/userActions";
 
 const MainContainer = styled.div`
-  height: 100vh;
+  min-height: 100vh;
   background-color: ${(props) => props.theme.backgroundPrimary};
   color: ${(props) => props.theme.primary};
-  padding: 4rem 24rem;
+  padding: 4rem 6rem;
+  @media (min-width: 768px) {
+    padding: 4rem 10rem;
+  }
+  @media (min-width: 992px) {
+    padding: 4rem 12rem;
+  }
+  @media (min-width: 1200px) {
+    padding: 4rem 24rem;
+  }
 `;
 
 const StyledUserIcon = styled(User)`
   height: 22rem;
   width: 12rem;
   color: ${(props) => props.theme.primary};
-  margin-right: 4rem;
+  @media (min-width: 992px) {
+    margin-right: 4rem;
+  }
 `;
 
 const Info = styled.div`
@@ -51,17 +62,27 @@ const StyledText = styled.span`
 
 const EditButton = styled(StyledButton)`
   margin: 1.4rem 0;
-  align-self: flex-end;
+  align-self: flex-start;
+  @media (min-width: 768px) {
+    align-self: flex-end;
+  }
   border-color: ${(props) => props.theme.backgroundSecondary};
   color: ${(props) => props.theme.primary};
   background-color: ${(props) => props.theme.backgroundSecondary};
 `;
 
 const Container = styled.div`
-  border: 1.6px solid ${(props) => props.theme.border};
-  border-radius: 5px;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    border: 1.6px solid ${(props) => props.theme.border};
+    border-radius: 5px;
+  }
+  @media (min-width: 992px) {
+    flex-direction: row;
+  }
 `;
 
 function Profile() {

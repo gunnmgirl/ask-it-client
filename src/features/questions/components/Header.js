@@ -9,10 +9,18 @@ import { toggleDark, toggleLight } from "../../../themes/actions/themesActions";
 const Container = styled.div`
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: space-between;
   background-color: ${(props) => props.theme.backgroundSecondary};
   color: ${(props) => props.theme.primary};
-  padding: 0 24rem;
+  padding: 0 6rem;
+  @media (min-width: 768px) {
+    padding: 0 14rem;
+    flex-direction: row;
+  }
+  @media (min-width: 992px) {
+    padding: 0 24rem;
+  }
 `;
 
 const Wrapper = styled.div`

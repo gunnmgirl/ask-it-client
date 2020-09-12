@@ -8,10 +8,16 @@ import { postQuestion } from "../actions/questionsActions";
 
 const StyledForm = styled.form`
   margin: 2rem 0;
-  padding: 0 30rem;
   display: flex;
+  padding: 0 8rem;
   flex-direction: column;
   align-items: center;
+  @media (min-width: 768px) {
+    padding: 0 16rem;
+  }
+  @media (min-width: 992px) {
+    padding: 0 24rem;
+  }
 `;
 
 const StyledButton = styled.button`
@@ -26,10 +32,9 @@ const StyledButton = styled.button`
 const StyledTextarea = styled.textarea`
   resize: none;
   border: none;
+  width: 80%;
   min-height: 5rem;
-  height: auto;
   text-align: center;
-  width: 100%;
   background-color: ${(props) => props.theme.backgroundSecondary};
   color: ${(props) => props.theme.primary};
   border: 0.1rem solid ${(props) => props.theme.border};

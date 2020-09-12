@@ -6,7 +6,13 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.4rem 24rem;
+  padding: 0.4rem 6rem;
+  @media (min-width: 768px) {
+    padding: 0.4rem 14rem;
+  }
+  @media (min-width: 992px) {
+    padding: 0.4rem 24rem;
+  }
 `;
 
 const StyledLink = styled(Link)`

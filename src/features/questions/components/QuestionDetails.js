@@ -16,18 +16,22 @@ import Answer from "./Answer";
 const MainContainer = styled.div`
   background-color: ${(props) => props.theme.backgroundPrimary};
   min-height: 100vh;
-  height: auto;
 `;
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
   min-height: 100vh;
   display: flex;
-  padding: 0 24rem;
+  padding: 0 6rem;
   flex-direction: column;
   align-items: center;
   background-color: ${(props) => props.theme.backgroundPrimary};
+  @media (min-width: 768px) {
+    padding: 0 16rem;
+  }
+  @media (min-width: 992px) {
+    padding: 0 24rem;
+  }
 `;
 
 const Answers = styled.div`
@@ -45,7 +49,6 @@ const MainWrapper = styled.div`
   width: 22rem;
   margin: 0.2rem 0;
   min-height: 4rem;
-  height: auto;
   background-color: ${(props) => props.theme.backgroundSecondary};
   border: 0.1rem solid ${(props) => props.theme.backgroundPrimary};
   border-radius: 5px;
