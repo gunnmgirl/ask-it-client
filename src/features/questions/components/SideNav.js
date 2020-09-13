@@ -50,10 +50,13 @@ function SideNav() {
           <StyledLink to="/">Latest</StyledLink>
         </Wrapper>
         <Wrapper>
-          <StyledLink to="/hot"> Hot Questions </StyledLink>
+          <StyledLink to="/hot">Hot Questions</StyledLink>
         </Wrapper>
         <Wrapper>
-          <StyledLink to="/popular">Popular </StyledLink>
+          <StyledLink to="/popular">Popular</StyledLink>
+        </Wrapper>
+        <Wrapper>
+          <StyledLink to="/myQuestions">My Questions</StyledLink>
         </Wrapper>
       </SideNavColumn>
     </StyledSideNav>

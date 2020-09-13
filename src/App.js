@@ -36,7 +36,6 @@ function App() {
             <Route path="/popular" component={Popular} />
             <Route path="/myQuestions" component={MyQuestions} />
             <Route path="/:questionId" component={QuestionDetails} />
-
             <Route path="/" exact component={Latest} />
           </Switch>
         ) : (
