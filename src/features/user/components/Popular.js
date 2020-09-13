@@ -37,10 +37,15 @@ const Container = styled.div`
   align-items: center;
 `;
 
+const StyledP = styled.p`
+  text-align: center;
+`;
+
 function Popular() {
   const users = useSelector((state) => state.user.users);
   const page = useSelector((state) => state.user.page);
   const totalUsers = useSelector((state) => state.user.totalUsers);
+  const isLoading = useSelector((state) => state.user.loading);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -56,8 +61,10 @@ function Popular() {
       <SideNav />
       <Container>
         <Header />
-        {users.length === 0 ? (
+        {isLoading ? (
           <Loading />
+        ) : users.length === 0 ? (
+          <StyledP>No users to show</StyledP>
         ) : (
           <List>
             {users.map((user) => (
@@ -65,7 +72,7 @@ function Popular() {
             ))}
           </List>
         )}
-        {users.length < totalUsers ? <LoadMoreButton /> : null}
+        {!isLoading && users.length < totalUsers ? <LoadMoreButton /> : null}
       </Container>
     </MainContainer>
   );

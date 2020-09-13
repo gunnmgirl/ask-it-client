@@ -44,10 +44,15 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
+const StyledP = styled.p`
+  text-align: center;
+`;
+
 function Latest() {
   const questions = useSelector((state) => state.questions.questions);
   const page = useSelector((state) => state.questions.page);
   const totalQuestions = useSelector((state) => state.questions.totalQuestions);
+  const isLoading = useSelector((state) => state.questions.loading);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -64,8 +69,10 @@ function Latest() {
       <div>
         <Header />
         <QuestionForm />
-        {questions.length === 0 ? (
+        {isLoading ? (
           <Loading />
+        ) : questions.length === 0 ? (
+          <StyledP>No questions to show</StyledP>
         ) : (
           <Container>
             <List>
@@ -73,7 +80,9 @@ function Latest() {
                 <ListItem question={question} key={question._id}></ListItem>
               ))}
             </List>
-            {questions.length < totalQuestions ? <LoadMoreButton /> : null}
+            {!isLoading && questions.length < totalQuestions ? (
+              <LoadMoreButton />
+            ) : null}
           </Container>
         )}
       </div>
