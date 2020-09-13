@@ -5,15 +5,19 @@ import { useDispatch } from "react-redux";
 import { loadMoreQuestions } from "../actions/questionsActions";
 
 const StyledButton = styled.button`
-  border: 0.1rem solid ${(props) => props.theme.warning};
+  border: 1px solid ${(props) => props.theme.blue};
   font-size: 1rem;
   border-radius: 5px;
   height: 2rem;
   width: 9rem;
-  margin-right: 0.4rem;
-  color: ${(props) => props.theme.warning};
-  background-color: ${(props) => props.theme.backgroundPrimary};
+  margin: 0.4rem 0;
+  color: ${(props) => props.theme.blue};
+  background-color: ${(props) => props.theme.gray};
   align-self: center;
+  :hover {
+    cursor: pointer;
+    background-color: ${(props) => props.theme.blueHover};
+  }
 `;
 
 function LoadMoreButton() {

@@ -8,33 +8,42 @@ import { useParams } from "react-router-dom";
 import { postAnswer } from "../actions/questionsActions";
 
 const StyledForm = styled.form`
-  margin: 0.2rem 0;
+  padding: 1rem 1rem;
+  margin-bottom: 2rem;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  border: 0.1rem solid ${(props) => props.theme.border};
+  border-right: none;
+  border-left: none;
 `;
 
 const StyledButton = styled.button`
-  border: 0.1rem solid ${(props) => props.theme.backgroundPrimary};
+  border: 0.1rem solid ${(props) => props.theme.border};
   border-radius: 5px;
-  height: 1.8rem;
-  width: 4rem;
-  color: ${(props) => props.theme.backgroundPrimary};
-  background-color: ${(props) => props.theme.warning};
+  height: 2rem;
+  font-size: 1rem;
+  width: 6rem;
+  color: ${(props) => props.theme.black};
+  align-self: flex-end;
+  background-color: ${(props) => props.theme.gray};
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledTextarea = styled.textarea`
   resize: none;
   border: none;
   min-height: 5rem;
-  height: auto;
-  text-align: center;
   width: 100%;
-  background-color: ${(props) => props.theme.backgroundSecondary};
-  color: ${(props) => props.theme.primary};
-  border: 0.1rem solid ${(props) => props.theme.border};
-  border-radius: 5px;
+  text-align: center;
+  background-color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black};
+  ::placeholder {
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+  }
 `;
 
 function AnswerForm() {

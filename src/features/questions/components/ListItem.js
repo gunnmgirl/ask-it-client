@@ -7,28 +7,32 @@ import { useDispatch } from "react-redux";
 import { upvoteQuestion, downvoteQuestion } from "../actions/questionsActions";
 
 const Container = styled.div`
-  border: 0.1rem solid ${(props) => props.theme.backgroundPrimary};
-  color: ${(props) => props.theme.primary};
+  border: 0.1rem solid ${(props) => props.theme.border};
+  color: ${(props) => props.theme.black};
   border-radius: 5px;
   width: 100%;
   min-height: 7rem;
   height: auto;
   display: flex;
   flex-direction: column;
-  background-color: ${(props) => props.theme.backgroundSecondary};
+  background-color: ${(props) => props.theme.gray};
   margin: 1rem 0;
 `;
 
 const Info = styled.div`
   display: flex;
   justify-content: space-evenly;
-  border-top: 0.1rem solid ${(props) => props.theme.backgroundPrimary};
+  border-top: 0.1rem solid ${(props) => props.theme.border};
+  color: ${(props) => props.theme.blue};
 `;
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
   margin: 0.4rem 0;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledText = styled.p`
@@ -42,6 +46,7 @@ const StyledText = styled.p`
 
 const StyledNumber = styled.span`
   margin-left: 0.2rem;
+  color: ${(props) => props.theme.black};
 `;
 
 const Content = styled.div`
@@ -68,8 +73,7 @@ function ListItem({ question }) {
       <Info>
         <Wrapper>
           <ThumbsUp
-            size="20"
-            strokeWidth="1.5"
+            size="21"
             onClick={() =>
               dispatch(upvoteQuestion({ questionId: question._id }))
             }
@@ -78,8 +82,7 @@ function ListItem({ question }) {
         </Wrapper>
         <Wrapper>
           <ThumbsDown
-            size="20"
-            strokeWidth="1.5"
+            size="21"
             onClick={() =>
               dispatch(downvoteQuestion({ questionId: question._id }))
             }
@@ -87,7 +90,7 @@ function ListItem({ question }) {
           <StyledNumber>{question.downvotes.count}</StyledNumber>
         </Wrapper>
         <Wrapper>
-          <MessageSquare size="20" strokeWidth="1.5" />
+          <MessageSquare size="21" />
           <StyledNumber>{question.answers.length}</StyledNumber>
         </Wrapper>
       </Info>

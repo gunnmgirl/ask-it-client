@@ -1,18 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import { MessageSquare } from "react-feather";
+import { MessageSquare, User } from "react-feather";
 
 const Container = styled.div`
-  border: 0.1rem solid ${(props) => props.theme.backgroundPrimary};
-  color: ${(props) => props.theme.primary};
+  border: 0.1rem solid ${(props) => props.theme.border};
+  color: ${(props) => props.theme.black};
   border-radius: 5px;
-  width: 16rem;
   height: 4rem;
+  width: 16rem;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: ${(props) => props.theme.backgroundSecondary};
-  margin: 1rem 0.2rem;
+  align-items: center;
+  background-color: ${(props) => props.theme.gray};
+  margin: 1rem 0.3rem;
 `;
 
 const StyledText = styled.span`
@@ -21,29 +20,40 @@ const StyledText = styled.span`
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
-const StyledWrapper = styled(Wrapper)`
-  align-self: end;
+const StyledWrapper = styled.div`
+  display: flex;
 `;
 
-function ListItem(props) {
+const StyledUser = styled(User)`
+  margin-right: 2rem;
+`;
+
+const StyledMessageSquare = styled(MessageSquare)`
+  color: ${(props) => props.theme.blue};
+`;
+
+function UserItem(props) {
   const { user } = props;
 
   return (
     <Container>
+      <StyledUser size="3rem" strokeWidth="1.5px" />
       <Wrapper>
-        <StyledText>{user.firstName}</StyledText>
-        <StyledText>{user.lastName}</StyledText>
+        <StyledText>
+          {user.firstName}
+          {user.lastName}
+        </StyledText>
+        <StyledWrapper>
+          <StyledMessageSquare />
+          <StyledText>{user.length}</StyledText>
+        </StyledWrapper>
       </Wrapper>
-      <StyledWrapper>
-        <MessageSquare />
-        <StyledText>{user.length}</StyledText>
-      </StyledWrapper>
     </Container>
   );
 }
 
-export default ListItem;
+export default UserItem;

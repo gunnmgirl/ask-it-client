@@ -5,31 +5,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
 import Header from "../../questions/components/Header";
+import SideNav from "../../questions/components/SideNav";
 import EditProfileForm from "./EditProfileForm";
 import ChangePasswordForm from "./ChangePasswordForm";
+import Loading from "../../questions/components/Loading";
 
 import { getUser } from "../actions/userActions";
 
 const MainContainer = styled.div`
+  background-color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black};
+  display: grid;
   min-height: 100vh;
-  background-color: ${(props) => props.theme.backgroundPrimary};
-  color: ${(props) => props.theme.primary};
-  padding: 4rem 6rem;
+  grid-template-rows: auto auto;
   @media (min-width: 768px) {
-    padding: 4rem 10rem;
-  }
-  @media (min-width: 992px) {
-    padding: 4rem 12rem;
-  }
-  @media (min-width: 1200px) {
-    padding: 4rem 24rem;
+    grid-template-columns: 1fr 5fr;
   }
 `;
 
 const StyledUserIcon = styled(User)`
   height: 22rem;
   width: 12rem;
-  color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.black};
   @media (min-width: 992px) {
     margin-right: 4rem;
   }
@@ -46,14 +43,17 @@ const Wrapper = styled.div`
 `;
 
 const StyledButton = styled.button`
-  border: 0.1rem solid ${(props) => props.theme.warning};
+  border: 0.1rem solid ${(props) => props.theme.blue};
   font-size: 1rem;
   border-radius: 5px;
   height: 2rem;
   width: 9rem;
   margin-right: 0.4rem;
-  color: ${(props) => props.theme.warning};
-  background-color: ${(props) => props.theme.backgroundPrimary};
+  color: ${(props) => props.theme.blue};
+  background-color: ${(props) => props.theme.gray};
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledText = styled.span`
@@ -66,21 +66,19 @@ const EditButton = styled(StyledButton)`
   @media (min-width: 768px) {
     align-self: flex-end;
   }
-  border-color: ${(props) => props.theme.backgroundSecondary};
-  color: ${(props) => props.theme.primary};
-  background-color: ${(props) => props.theme.backgroundSecondary};
+  border-color: ${(props) => props.theme.blue};
+  color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.blue};
 `;
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
+  padding: 1rem 1rem;
+  background-color: ${(props) => props.theme.white};
   @media (min-width: 768px) {
-    flex-direction: row;
-    border: 1.6px solid ${(props) => props.theme.border};
-    border-radius: 5px;
-  }
-  @media (min-width: 992px) {
     flex-direction: row;
   }
 `;
@@ -107,47 +105,53 @@ function Profile() {
 
   return (
     <>
-      <Header />
       <MainContainer>
-        <Container>
-          <StyledUserIcon strokeWidth="1" />
-          {!me ? (
-            <div>Loading..</div>
-          ) : isEditing ? (
-            <EditProfileForm
-              initialValues={{ firstName: me.firstName, lastName: me.lastName }}
-              handleOnEdit={handleOnEdit}
-            />
-          ) : isChanging ? (
-            <ChangePasswordForm handleOnChange={handleOnChange} />
-          ) : (
-            <Info>
-              <EditButton onClick={() => setIsEditing(true)}>
-                Edit Profile
-              </EditButton>
-              <Wrapper>
-                <StyledText>First Name:</StyledText>
-                <StyledText>{me.firstName}</StyledText>
-              </Wrapper>
-              <Wrapper>
-                <StyledText>Last Name:</StyledText>
-                <StyledText>{me.lastName}</StyledText>
-              </Wrapper>
-              <Wrapper>
-                <StyledText>Email:</StyledText>
-                <StyledText>{me.email}</StyledText>
-              </Wrapper>
-              <Wrapper>
-                <StyledButton onClick={() => history.push("/myQuestions")}>
-                  My Questions
-                </StyledButton>
-                <StyledButton onClick={() => setIsChanging(true)}>
-                  Change Password
-                </StyledButton>
-              </Wrapper>
-            </Info>
-          )}
-        </Container>
+        <SideNav />
+        <div>
+          <Header />
+          <Container>
+            <StyledUserIcon strokeWidth="1px" />
+            {!me ? (
+              <Loading />
+            ) : isEditing ? (
+              <EditProfileForm
+                initialValues={{
+                  firstName: me.firstName,
+                  lastName: me.lastName,
+                }}
+                handleOnEdit={handleOnEdit}
+              />
+            ) : isChanging ? (
+              <ChangePasswordForm handleOnChange={handleOnChange} />
+            ) : (
+              <Info>
+                <EditButton onClick={() => setIsEditing(true)}>
+                  Edit Profile
+                </EditButton>
+                <Wrapper>
+                  <StyledText>First Name:</StyledText>
+                  <StyledText>{me.firstName}</StyledText>
+                </Wrapper>
+                <Wrapper>
+                  <StyledText>Last Name:</StyledText>
+                  <StyledText>{me.lastName}</StyledText>
+                </Wrapper>
+                <Wrapper>
+                  <StyledText>Email:</StyledText>
+                  <StyledText>{me.email}</StyledText>
+                </Wrapper>
+                <Wrapper>
+                  <StyledButton onClick={() => history.push("/myQuestions")}>
+                    My Questions
+                  </StyledButton>
+                  <StyledButton onClick={() => setIsChanging(true)}>
+                    Change Password
+                  </StyledButton>
+                </Wrapper>
+              </Info>
+            )}
+          </Container>
+        </div>
       </MainContainer>
     </>
   );

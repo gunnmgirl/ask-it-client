@@ -6,22 +6,27 @@ import { useDispatch } from "react-redux";
 import { downvoteAnswer, upvoteAnswer } from "../actions/questionsActions";
 
 const Container = styled.div`
-  color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.black};
   display: flex;
   flex-direction: column;
-  background-color: ${(props) => props.theme.backgroundSecondary};
+  background-color: ${(props) => props.theme.gray};
 `;
 
 const Info = styled.div`
   display: flex;
   justify-content: space-evenly;
-  border-top: 0.1rem solid ${(props) => props.theme.backgroundPrimary};
+  border-top: 0.1rem solid ${(props) => props.theme.border};
   padding: 0.4rem 0;
+  height: 2.2rem;
 `;
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  color: ${(props) => props.theme.blue};
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledText = styled.p`
@@ -34,9 +39,11 @@ const StyledText = styled.p`
 
 const StyledNumber = styled.span`
   margin-left: 0.2rem;
+  color: ${(props) => props.theme.black};
 `;
 
 const Content = styled.div`
+  min-height: 5rem;
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
@@ -59,16 +66,14 @@ function Answer({ answer }) {
         <Wrapper>
           <ThumbsUp
             onClick={() => dispatch(upvoteAnswer({ answerId: answer._id }))}
-            size="20"
-            strokeWidth="1.5"
+            size="21"
           />
           <StyledNumber>{answer.upvotes.count}</StyledNumber>
         </Wrapper>
         <Wrapper>
           <ThumbsDown
             onClick={() => dispatch(downvoteAnswer({ answerId: answer._id }))}
-            size="20"
-            strokeWidth="1.5"
+            size="21"
           />
           <StyledNumber>{answer.downvotes.count}</StyledNumber>
         </Wrapper>

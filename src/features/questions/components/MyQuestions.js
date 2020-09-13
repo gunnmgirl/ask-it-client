@@ -3,28 +3,25 @@ import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
 
 import Header from "./Header";
-import SubHeader from "./SubHeader";
+import SideNav from "./SideNav";
 import ListItem from "./ListItem";
 import LoadMoreButton from "./LoadMoreButton";
+import Loading from "./Loading";
 import { getMyQuestions, clearPageCounter } from "../actions/questionsActions";
 
 const MainContainer = styled.div`
-  background-color: ${(props) => props.theme.backgroundPrimary};
-  color: ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black};
   min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 5fr;
 `;
 
 const List = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 6rem;
   align-items: center;
-  @media (min-width: 768px) {
-    padding: 0 16rem;
-  }
-  @media (min-width: 992px) {
-    padding: 0 24rem;
-  }
+  margin: 0 16rem;
 `;
 
 const Container = styled.div`
@@ -50,20 +47,22 @@ function MyQuestions() {
 
   return (
     <MainContainer>
-      <Header />
-      <SubHeader />
-      {questions.length === 0 ? (
-        <div>Loading..</div>
-      ) : (
-        <Container>
-          <List>
-            {questions.map((question) => (
-              <ListItem question={question} key={question._id}></ListItem>
-            ))}
-          </List>
-          {questions.length < totalQuestions ? <LoadMoreButton /> : null}
-        </Container>
-      )}
+      <SideNav />
+      <div>
+        <Header />
+        {questions.length === 0 ? (
+          <Loading />
+        ) : (
+          <Container>
+            <List>
+              {questions.map((question) => (
+                <ListItem question={question} key={question._id}></ListItem>
+              ))}
+            </List>
+            {questions.length < totalQuestions ? <LoadMoreButton /> : null}
+          </Container>
+        )}
+      </div>
     </MainContainer>
   );
 }

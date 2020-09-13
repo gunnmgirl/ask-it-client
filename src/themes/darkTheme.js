@@ -1,12 +1,11 @@
 const lightTheme = {
-  backgroundSecondary: "#1a1a1b", //gray
-  backgroundPrimary: "#030303", //black
-  backgroundInput: "#272729",
-  backgroundButton: "#d7dadc",
-  border: "#343536",
-  primary: "#edeeef",
-  secondary: "#fff",
-  warning: "rgb(224, 36, 94)", //red
+  blue: "#0288d1",
+  white: "#001321",
+  black: "#fafafa",
+  gray: "#021d2e",
+  border: "#1a5171",
+  yellow: "#fb8c00",
+  blueHover: "rgba(2,136,209,0.1)",
 };
 
 export default lightTheme;

@@ -7,38 +7,48 @@ import { useDispatch } from "react-redux";
 import { postQuestion } from "../actions/questionsActions";
 
 const StyledForm = styled.form`
-  margin: 2rem 0;
+  margin: 0 2rem;
+  padding: 1rem 1rem;
   display: flex;
-  padding: 0 8rem;
   flex-direction: column;
-  align-items: center;
+  border: 0.1rem solid ${(props) => props.theme.border};
+  border-right: none;
+  border-left: none;
+  margin: 0 2rem;
   @media (min-width: 768px) {
-    padding: 0 16rem;
+    margin: 0 6rem;
   }
-  @media (min-width: 992px) {
-    padding: 0 24rem;
+  @media (min-width: 1200px) {
+    margin: 0 16rem;
   }
 `;
 
 const StyledButton = styled.button`
-  border: 0.1rem solid ${(props) => props.theme.backgroundPrimary};
+  border: 0.1rem solid ${(props) => props.theme.border};
   border-radius: 5px;
-  height: 1.8rem;
-  width: 4rem;
-  color: ${(props) => props.theme.backgroundPrimary};
-  background-color: ${(props) => props.theme.warning};
+  height: 2rem;
+  font-size: 1rem;
+  width: 6rem;
+  color: ${(props) => props.theme.black};
+  align-self: flex-end;
+  background-color: ${(props) => props.theme.gray};
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledTextarea = styled.textarea`
   resize: none;
   border: none;
-  width: 80%;
   min-height: 5rem;
+  width: 100%;
   text-align: center;
-  background-color: ${(props) => props.theme.backgroundSecondary};
-  color: ${(props) => props.theme.primary};
-  border: 0.1rem solid ${(props) => props.theme.border};
-  border-radius: 5px;
+  background-color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black};
+  ::placeholder {
+    font-size: 1rem;
+    font-family: "Roboto", sans-serif;
+  }
 `;
 
 function QuestionForm() {

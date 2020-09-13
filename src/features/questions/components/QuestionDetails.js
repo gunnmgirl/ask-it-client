@@ -10,31 +10,38 @@ import {
 import ListItem from "./ListItem";
 import AnswerForm from "./AnswerForm";
 import Header from "./Header";
+import SideNav from "./SideNav";
 import EditAnswer from "./EditAnswer";
 import Answer from "./Answer";
 
 const MainContainer = styled.div`
-  background-color: ${(props) => props.theme.backgroundPrimary};
+  background-color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black};
+  display: grid;
   min-height: 100vh;
+  grid-template-rows: auto auto;
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 5fr;
+  }
 `;
 
 const Container = styled.div`
-  width: 100%;
+  padding: 0 2rem;
   min-height: 100vh;
   display: flex;
-  padding: 0 6rem;
   flex-direction: column;
   align-items: center;
-  background-color: ${(props) => props.theme.backgroundPrimary};
+  background-color: ${(props) => props.theme.white};
   @media (min-width: 768px) {
-    padding: 0 16rem;
+    padding: 0 6rem;
   }
-  @media (min-width: 992px) {
-    padding: 0 24rem;
+  @media (min-width: 1200px) {
+    padding: 0 12rem;
   }
 `;
 
 const Answers = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,27 +53,33 @@ const Wrapper = styled.div`
 `;
 
 const MainWrapper = styled.div`
-  width: 22rem;
-  margin: 0.2rem 0;
-  min-height: 4rem;
-  background-color: ${(props) => props.theme.backgroundSecondary};
-  border: 0.1rem solid ${(props) => props.theme.backgroundPrimary};
+  width: 75%;
+  margin: 0.6rem 0;
+  background-color: ${(props) => props.theme.gray};
+  border: 0.1rem solid ${(props) => props.theme.border};
   border-radius: 5px;
 `;
 
 const StyledButton = styled.button`
-  border: 0.1rem solid ${(props) => props.theme.backgroundSecondary};
-  border-radius: 5px;
-  height: 1.8rem;
-  width: 4rem;
-  color: ${(props) => props.theme.backgroundPrimary};
-  background-color: ${(props) => props.theme.warning};
+  border: 0.1rem solid ${(props) => props.theme.blue};
+  border-radius: 0;
+  border-top-right-radius: 5px;
+  height: 2rem;
+  font-size: 1rem;
+  width: 4.5rem;
+  color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.blue};
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const StyledButtonDark = styled(StyledButton)`
-  background-color: ${(props) => props.theme.backgroundSecondary};
-  color: ${(props) => props.theme.primary};
-  border-color: ${(props) => props.theme.warning};
+  background-color: ${(props) => props.theme.gray};
+  border-radius: 0;
+  border-bottom-left-radius: 5px;
+  color: ${(props) => props.theme.blue};
+  border-color: ${(props) => props.theme.blue};
 `;
 
 function QuestionDetails() {
@@ -86,45 +99,48 @@ function QuestionDetails() {
 
   return (
     <MainContainer>
-      <Header />
-      <Container>
-        <ListItem question={question} key={question._id} />
-        <AnswerForm />
-        <Answers>
-          {question.answers.map((answer) => (
-            <MainWrapper key={answer._id}>
-              {userId === answer.createdBy ? (
-                <Wrapper>
-                  <StyledButtonDark
-                    onClick={() =>
-                      dispatch(
-                        deleteAnswer({
-                          answerId: answer._id,
-                          questionId: question._id,
-                        })
-                      )
-                    }
-                  >
-                    Delete
-                  </StyledButtonDark>
-                  <StyledButton onClick={() => setIsEditing(answer._id)}>
-                    Edit
-                  </StyledButton>
-                </Wrapper>
-              ) : null}
-              {isEditing === answer._id ? (
-                <EditAnswer
-                  answerId={answer._id}
-                  handleOnSubmit={handleOnSubmit}
-                  initialValue={answer.body}
-                />
-              ) : (
-                <Answer answer={answer} />
-              )}
-            </MainWrapper>
-          ))}
-        </Answers>
-      </Container>
+      <SideNav />
+      <div>
+        <Header />
+        <Container>
+          <ListItem question={question} key={question._id} />
+          <AnswerForm />
+          <Answers>
+            {question.answers.map((answer) => (
+              <MainWrapper key={answer._id}>
+                {userId === answer.createdBy ? (
+                  <Wrapper>
+                    <StyledButtonDark onClick={() => setIsEditing(answer._id)}>
+                      Edit
+                    </StyledButtonDark>
+                    <StyledButton
+                      onClick={() =>
+                        dispatch(
+                          deleteAnswer({
+                            answerId: answer._id,
+                            questionId: question._id,
+                          })
+                        )
+                      }
+                    >
+                      Delete
+                    </StyledButton>
+                  </Wrapper>
+                ) : null}
+                {isEditing === answer._id ? (
+                  <EditAnswer
+                    answerId={answer._id}
+                    handleOnSubmit={handleOnSubmit}
+                    initialValue={answer.body}
+                  />
+                ) : (
+                  <Answer answer={answer} />
+                )}
+              </MainWrapper>
+            ))}
+          </Answers>
+        </Container>
+      </div>
     </MainContainer>
   );
 }

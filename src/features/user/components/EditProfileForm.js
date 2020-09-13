@@ -9,25 +9,25 @@ import { editUser } from "../actions/userActions";
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.onPrimary};
   width: 17rem;
 `;
 
 const StyledInput = styled.input`
-  background-color: ${(props) => props.theme.backgroundSecondary};
-  border: 1px solid ${(props) => props.theme.border};
-  color: ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.secondaryDark};
+  border: 1px solid ${(props) => props.theme.onPrimary};
+  color: ${(props) => props.theme.onPrimary};
   height: 2rem;
   margin: 0.4rem 0;
 `;
 
 const StyledText = styled.span`
-  color: ${(props) => props.theme.warning};
+  color: ${(props) => props.theme.primary};
 `;
 
 const StyledButton = styled.button`
-  background-color: ${(props) => props.theme.backgroundButton};
-  border: 1px solid ${(props) => props.theme.backgroundButton};
+  background-color: ${(props) => props.theme.primaryDark};
+  border: 1px solid ${(props) => props.theme.onPrimary};
   border-radius: 10px;
   width: 5rem;
   height: 2rem;
@@ -36,9 +36,9 @@ const StyledButton = styled.button`
 `;
 
 const EditButton = styled(StyledButton)`
-  color: ${(props) => props.theme.warning};
-  background-color: ${(props) => props.theme.backgroundPrimary};
-  border-color: ${(props) => props.theme.warning};
+  color: ${(props) => props.theme.onPrimary};
+  background-color: ${(props) => props.theme.primaryDark};
+  border-color: ${(props) => props.theme.onPrimary};
 `;
 
 const Wrapper = styled.div`

@@ -1,58 +1,119 @@
 import React from "react";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
+import { HelpCircle } from "react-feather";
+
+import ToggleTheme from "../../questions/components/ToggleTheme";
+
+const MainContainer = styled.div`
+  display: grid;
+  grid-template-columns: 0 1fr;
+  min-height: 100vh;
+  background-color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.black};
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
 
 const Container = styled.div`
+  background: url(docs/images/entry.jpg);
+  background-size: cover;
+  background-position: center;
   display: flex;
-  min-height: 100vh;
-  color: ${(props) => props.theme.primary};
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: ${(props) => props.theme.backgroundPrimary};
 `;
 
 const Wrapper = styled.div`
   margin: 1.2rem 0;
+  color: ${(props) => props.theme.white};
+  display: flex;
+  align-items: center;
 `;
 
-const StyledText = styled.span`
-  color: ${(props) => props.theme.warning};
-  margin-left: 0.4rem;
+const ImageText = styled.p`
+  font-size: 1.2rem;
+  margin-left: 0.6rem;
 `;
 
-const StyledButton = styled.button`
-  background-color: ${(props) => props.theme.backgroundButton};
-  border: 2px solid ${(props) => props.theme.backgroundButton};
-  border-radius: 10px;
-  width: 18rem;
-  height: 2rem;
+const MainWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.4rem 10rem;
+`;
+
+const StyledHelpCircle = styled(HelpCircle)`
+  fill: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.blue};
+  align-self: flex-start;
+`;
+
+const SignUp = styled.button`
+  width: 100%;
+  height: 2.2rem;
   font-size: 1rem;
-  margin-bottom: 0.4rem;
+  border-radius: 9999px;
+  background-color: ${(props) => props.theme.blue};
+  border: 1px solid ${(props) => props.theme.blue};
+  color: ${(props) => props.theme.white};
+  margin-bottom: 0.8rem;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
-const StyledButtonDark = styled(StyledButton)`
-  background-color: ${(props) => props.theme.backgroundPrimary};
-  color: ${(props) => props.theme.primary};
+const LogIn = styled.button`
+  width: 100%;
+  height: 2.2rem;
+  font-size: 1rem;
+  border-radius: 9999px;
+  background-color: ${(props) => props.theme.white};
+  border: 1px solid ${(props) => props.theme.blue};
+  color: ${(props) => props.theme.blue};
+  :hover {
+    background-color: ${(props) => props.theme.blueHover};
+    cursor: pointer;
+  }
+`;
+
+const StyledText = styled.p`
+  align-self: flex-start;
 `;
 
 function Entry() {
   const history = useHistory();
 
   return (
-    <Container>
-      <h1>Ask it</h1>
-      <Wrapper>
-        <span>Curious?</span>
-        <StyledText>Just ask!</StyledText>
-      </Wrapper>
-      <StyledButton onClick={() => history.push("/signup")}>
-        Sign up
-      </StyledButton>
-      <StyledButtonDark onClick={() => history.push("/login")}>
-        Log in
-      </StyledButtonDark>
-    </Container>
+    <>
+      <ToggleTheme />
+      <MainContainer>
+        <Container>
+          <Wrapper>
+            <HelpCircle size="1.8rem" />
+            <ImageText>Follow your interests.</ImageText>
+          </Wrapper>
+          <Wrapper>
+            <HelpCircle size="1.8rem" />
+            <ImageText>Hear what people are talking about.</ImageText>
+          </Wrapper>
+          <Wrapper>
+            <HelpCircle size="1.8rem" />
+            <ImageText>Join the conversation.</ImageText>
+          </Wrapper>
+        </Container>
+        <MainWrapper>
+          <StyledHelpCircle size="2.4rem" />
+          <h1> Ask questions and get answers on any topic</h1>
+          <StyledText>Join Ask it today!</StyledText>
+          <SignUp onClick={() => history.push("/signup")}>Sign up</SignUp>
+          <LogIn onClick={() => history.push("/login")}>Log in</LogIn>
+        </MainWrapper>
+      </MainContainer>
+    </>
   );
 }
 

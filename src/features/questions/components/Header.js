@@ -1,80 +1,44 @@
 import React from "react";
 import styled from "styled-components";
-import { Home, User, Sun, Moon } from "react-feather";
+import { Home, User } from "react-feather";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { toggleDark, toggleLight } from "../../../themes/actions/themesActions";
+import ToggleTheme from "./ToggleTheme";
 
 const Container = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  background-color: ${(props) => props.theme.backgroundSecondary};
-  color: ${(props) => props.theme.primary};
-  padding: 0 6rem;
-  @media (min-width: 768px) {
-    padding: 0 14rem;
-    flex-direction: row;
-  }
-  @media (min-width: 992px) {
-    padding: 0 24rem;
-  }
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
+  justify-content: flex-end;
+  background-color: ${(props) => props.theme.white};
+  margin-bottom: 2rem;
 `;
 
 const StyledUserIcon = styled(User)`
   margin: 0 1rem;
 `;
 
-const StyledHeader = styled.h1`
-  color: ${(props) => props.theme.warning};
-  margin: 0.5rem 0;
-`;
-
 const StyledLink = styled(Link)`
-  color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.black};
   text-decoration: none;
 `;
 
 function Header() {
   const userId = useSelector((state) => state.auth.userId);
-  const theme = useSelector((state) => state.theme.theme);
-  const dispatch = useDispatch();
 
   return (
     <Container>
-      <StyledHeader>Ask it</StyledHeader>
-      <Wrapper>
-        <StyledLink to="/">
-          <Home />
-        </StyledLink>
-        <StyledLink
-          to={{
-            pathname: `/profile/${userId}`,
-          }}
-        >
-          <StyledUserIcon />
-        </StyledLink>
-        {theme === "light" ? (
-          <Moon
-            onClick={() => {
-              dispatch(toggleDark());
-            }}
-          />
-        ) : (
-          <Sun
-            onClick={() => {
-              dispatch(toggleLight());
-            }}
-          />
-        )}
-      </Wrapper>
+      <StyledLink to="/">
+        <Home />
+      </StyledLink>
+      <StyledLink
+        to={{
+          pathname: `/profile/${userId}`,
+        }}
+      >
+        <StyledUserIcon />
+      </StyledLink>
+      <ToggleTheme />
     </Container>
   );
 }
