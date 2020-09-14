@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { HelpCircle } from "react-feather";
 
 import ToggleTheme from "../../../components/ToggleTheme";
+import EntryImage from "../../../docs/images/Entry.jpg";
 
 const MainContainer = styled.div`
   display: grid;
@@ -17,7 +18,7 @@ const MainContainer = styled.div`
 `;
 
 const Container = styled.div`
-  background: url(docs/images/entry.jpg);
+  background: url(${(props) => props.image});
   background-size: cover;
   background-position: center;
   display: flex;
@@ -91,18 +92,18 @@ function Entry() {
     <>
       <ToggleTheme />
       <MainContainer>
-        <Container>
+        <Container image={EntryImage}>
           <Wrapper>
             <HelpCircle size="1.8rem" />
-            <ImageText>Follow your interests.</ImageText>
+            <ImageText>Ask questions on various topics.</ImageText>
           </Wrapper>
           <Wrapper>
             <HelpCircle size="1.8rem" />
-            <ImageText>Hear what people are talking about.</ImageText>
+            <ImageText>Get answers from other users.</ImageText>
           </Wrapper>
           <Wrapper>
             <HelpCircle size="1.8rem" />
-            <ImageText>Join the conversation.</ImageText>
+            <ImageText>Vote on what you like or dislike.</ImageText>
           </Wrapper>
         </Container>
         <MainWrapper>
