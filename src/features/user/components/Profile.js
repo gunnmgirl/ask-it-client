@@ -8,7 +8,7 @@ import Header from "../../questions/components/Header";
 import SideNav from "../../questions/components/SideNav";
 import EditProfileForm from "./EditProfileForm";
 import ChangePasswordForm from "./ChangePasswordForm";
-import Loading from "../../questions/components/Loading";
+import Loading from "../../../components/Loading";
 
 import { getUser } from "../actions/userActions";
 

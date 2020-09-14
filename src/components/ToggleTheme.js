@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Sun, Moon } from "react-feather";
 import { useSelector, useDispatch } from "react-redux";
 
-import { toggleDark, toggleLight } from "../../../themes/actions/themesActions";
+import { toggleDark, toggleLight } from "../themes/actions/themesActions";
 
 const StyledIcon = styled.div`
   display: flex;

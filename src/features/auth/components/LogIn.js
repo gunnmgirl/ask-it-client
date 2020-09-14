@@ -6,7 +6,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import { login } from "../actions/authActions";
-import ToggleTheme from "../../questions/components/ToggleTheme";
+import ToggleTheme from "../../../components/ToggleTheme";
 
 const Container = styled.div`
   min-height: 100vh;

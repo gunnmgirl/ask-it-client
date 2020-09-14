@@ -7,8 +7,8 @@ import ListItem from "./ListItem";
 import SideNav from "./SideNav";
 
 import QuestionForm from "./QuestionForm";
-import LoadMoreButton from "./LoadMoreButton";
-import Loading from "./Loading";
+import LoadMoreButton from "../../../components/LoadMoreButton";
+import Loading from "../../../components/Loading";
 import {
   getLatestQuestions,
   clearPageCounter,

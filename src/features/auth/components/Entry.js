@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 import { HelpCircle } from "react-feather";
 
-import ToggleTheme from "../../questions/components/ToggleTheme";
+import ToggleTheme from "../../../components/ToggleTheme";
 
 const MainContainer = styled.div`
   display: grid;

@@ -14,7 +14,6 @@ const INITIAL_STATE = {
 };
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(action);
   switch (action.type) {
     case "CLEAR_PAGE_COUNTER":
       return { ...state, page: 0, questions: [] };

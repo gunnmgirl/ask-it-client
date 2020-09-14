@@ -5,8 +5,8 @@ import { useSelector, useDispatch } from "react-redux";
 import Header from "./Header";
 import SideNav from "./SideNav";
 import ListItem from "./ListItem";
-import LoadMoreButton from "./LoadMoreButton";
-import Loading from "./Loading";
+import LoadMoreButton from "../../../components/LoadMoreButton";
+import Loading from "../../../components/Loading";
 import { getMyQuestions, clearPageCounter } from "../actions/questionsActions";
 
 const MainContainer = styled.div`

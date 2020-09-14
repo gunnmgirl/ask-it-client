@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
-import { loadMoreQuestions } from "../actions/questionsActions";
+import { loadMoreQuestions } from "../features/questions/actions/questionsActions";
 
 const StyledButton = styled.button`
   border: 1px solid ${(props) => props.theme.secondary};

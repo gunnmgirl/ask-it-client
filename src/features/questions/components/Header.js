@@ -4,7 +4,7 @@ import { Home, User } from "react-feather";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import ToggleTheme from "./ToggleTheme";
+import ToggleTheme from "../../../components/ToggleTheme";
 
 const Container = styled.div`
   display: flex;

@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import Header from "../../questions/components/Header";
 import SideNav from "../../questions/components/SideNav";
-import Loading from "../../questions/components/Loading";
-import LoadMoreButton from "../../questions/components/LoadMoreButton";
+import Loading from "../../../components/Loading";
+import LoadMoreButton from "../../../components/LoadMoreButton";
 import UserItem from "./UserItem";
 import { getMostPopular } from "../actions/userActions";
 import { clearPageCounter } from "../../questions/actions/questionsActions";
