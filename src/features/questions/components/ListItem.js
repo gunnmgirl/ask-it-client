@@ -59,6 +59,10 @@ const Content = styled.div`
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
+  :hover {
+    cursor: pointer;
+    background-color: ${(props) => props.theme.onHover};
+  }
 `;
 
 function ListItem({ question }) {

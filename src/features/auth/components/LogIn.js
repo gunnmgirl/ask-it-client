@@ -120,7 +120,11 @@ function LogIn() {
           {formik.errors.password && formik.touched.password ? (
             <StyledText>{formik.errors.password}</StyledText>
           ) : null}
-          <StyledButton type="submit" onClick={formik.handleSubmit}>
+          <StyledButton
+            type="submit"
+            disabled={formik.isSubmitting}
+            onClick={formik.handleSubmit}
+          >
             Log in
           </StyledButton>
         </StyledForm>

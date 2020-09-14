@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { HelpCircle } from "react-feather";
 
 import ToggleTheme from "../../../components/ToggleTheme";
-import EntryImage from "../../../docs/images/Entry.jpg";
+import EntryImage from "../../../docs/images/Entry.png";
 
 const MainContainer = styled.div`
   display: grid;
@@ -21,22 +21,6 @@ const Container = styled.div`
   background: url(${(props) => props.image});
   background-size: cover;
   background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Wrapper = styled.div`
-  margin: 1.2rem 0;
-  color: ${(props) => props.theme.primary};
-  display: flex;
-  align-items: center;
-`;
-
-const ImageText = styled.p`
-  font-size: 1.2rem;
-  margin-left: 0.6rem;
 `;
 
 const MainWrapper = styled.div`
@@ -45,12 +29,6 @@ const MainWrapper = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0.4rem 10rem;
-`;
-
-const StyledHelpCircle = styled(HelpCircle)`
-  fill: ${(props) => props.theme.primary};
-  color: ${(props) => props.theme.secondary};
-  align-self: flex-start;
 `;
 
 const SignUp = styled.button`
@@ -65,6 +43,12 @@ const SignUp = styled.button`
   :hover {
     cursor: pointer;
   }
+`;
+
+const StyledHelpCircle = styled(HelpCircle)`
+  fill: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.secondary};
+  align-self: flex-start;
 `;
 
 const LogIn = styled.button`
@@ -89,23 +73,10 @@ function Entry() {
   const history = useHistory();
 
   return (
-    <>
-      <ToggleTheme />
-      <MainContainer>
-        <Container image={EntryImage}>
-          <Wrapper>
-            <HelpCircle size="1.8rem" />
-            <ImageText>Ask questions on various topics.</ImageText>
-          </Wrapper>
-          <Wrapper>
-            <HelpCircle size="1.8rem" />
-            <ImageText>Get answers from other users.</ImageText>
-          </Wrapper>
-          <Wrapper>
-            <HelpCircle size="1.8rem" />
-            <ImageText>Vote on what you like or dislike.</ImageText>
-          </Wrapper>
-        </Container>
+    <MainContainer>
+      <Container image={EntryImage} />
+      <div>
+        <ToggleTheme />
         <MainWrapper>
           <StyledHelpCircle size="2.4rem" />
           <h1> Ask questions and get answers on any topic</h1>
@@ -113,8 +84,8 @@ function Entry() {
           <SignUp onClick={() => history.push("/signup")}>Sign up</SignUp>
           <LogIn onClick={() => history.push("/login")}>Log in</LogIn>
         </MainWrapper>
-      </MainContainer>
-    </>
+      </div>
+    </MainContainer>
   );
 }
 
