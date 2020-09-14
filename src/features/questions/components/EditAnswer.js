@@ -15,12 +15,12 @@ const StyledForm = styled.form`
 `;
 
 const StyledButton = styled.button`
-  border: 0.1rem solid ${(props) => props.theme.backgroundPrimary};
+  border: 0.1rem solid ${(props) => props.theme.onPrimary};
   border-radius: 5px;
   height: 1.8rem;
   width: 4rem;
-  color: ${(props) => props.theme.primary};
-  background-color: ${(props) => props.theme.backgroundPrimary};
+  color: ${(props) => props.theme.onPrimary};
+  background-color: ${(props) => props.theme.surface};
   margin: 0 0.2rem;
 `;
 
@@ -30,9 +30,10 @@ const StyledTextarea = styled.textarea`
   min-height: 5rem;
   height: auto;
   text-align: center;
+  margin: 0.2rem 0;
   width: 100%;
-  background-color: ${(props) => props.theme.backgroundSecondary};
-  color: ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.surface};
+  color: ${(props) => props.theme.onPrimary};
   border: 0.1rem solid ${(props) => props.theme.border};
   border-radius: 5px;
 `;

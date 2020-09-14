@@ -36,6 +36,7 @@ const StyledTextarea = styled.textarea`
   resize: none;
   border: none;
   min-height: 5rem;
+  margin: 0.4rem 0;
   width: 100%;
   text-align: center;
   background-color: ${(props) => props.theme.primary};

@@ -71,8 +71,10 @@ function LogIn() {
   const dispatch = useDispatch();
 
   const validationSchema = Yup.object().shape({
-    password: Yup.string().required("Required"),
-    email: Yup.string().email("Invalid email address").required("Required"),
+    password: Yup.string().required("Password is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
   });
 
   const formik = useFormik({

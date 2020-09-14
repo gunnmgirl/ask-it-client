@@ -71,12 +71,14 @@ function SignUp() {
   const dispatch = useDispatch();
 
   const validationSchema = Yup.object().shape({
-    firstName: Yup.string().required("Required"),
-    lastName: Yup.string().required("Required"),
+    firstName: Yup.string().required("First name is required"),
+    lastName: Yup.string().required("Last name is required"),
     password: Yup.string()
-      .min(5, "Must be at least 5 characters long")
-      .required("Required"),
-    email: Yup.string().email("Invalid email address").required("Required"),
+      .min(5, "Password must be at least 5 characters long")
+      .required("Password is required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
   });
 
   const formik = useFormik({

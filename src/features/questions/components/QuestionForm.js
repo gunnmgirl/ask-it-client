@@ -43,6 +43,7 @@ const StyledTextarea = styled.textarea`
   min-height: 5rem;
   width: 100%;
   text-align: center;
+  margin: 0.4rem 0;
   background-color: ${(props) => props.theme.primary};
   color: ${(props) => props.theme.onPrimary};
   ::placeholder {

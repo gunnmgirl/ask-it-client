@@ -94,7 +94,10 @@ function ListItem({ question }) {
           <StyledNumber>{question.downvotes.count}</StyledNumber>
         </Wrapper>
         <Wrapper>
-          <MessageSquare size="21" />
+          <MessageSquare
+            size="21"
+            onClick={() => history.push(`/${question._id}`)}
+          />
           <StyledNumber>{question.answers.length}</StyledNumber>
         </Wrapper>
       </Info>

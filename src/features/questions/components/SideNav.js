@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledSideNav = styled.div`
@@ -25,12 +25,15 @@ const SideNavColumn = styled.div`
   width: 100%;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(NavLink)`
   text-decoration: none;
   color: ${(props) => props.theme.onPrimary};
   display: flex;
   justify-content: center;
   margin: 0.6rem 0;
+  &.active {
+    color: ${(props) => props.theme.warning};
+  }
 `;
 
 const Wrapper = styled.div`
@@ -47,7 +50,9 @@ function SideNav() {
     <StyledSideNav>
       <SideNavColumn>
         <Wrapper>
-          <StyledLink to="/">Latest</StyledLink>
+          <StyledLink to="/" exact>
+            Latest
+          </StyledLink>
         </Wrapper>
         <Wrapper>
           <StyledLink to="/hot">Hot Questions</StyledLink>
