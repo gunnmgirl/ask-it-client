@@ -15,8 +15,8 @@ import EditAnswer from "./EditAnswer";
 import Answer from "./Answer";
 
 const MainContainer = styled.div`
-  background-color: ${(props) => props.theme.white};
-  color: ${(props) => props.theme.black};
+  background-color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.onPrimary};
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto auto;
@@ -31,7 +31,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.primary};
   @media (min-width: 768px) {
     padding: 0 6rem;
   }
@@ -55,31 +55,31 @@ const Wrapper = styled.div`
 const MainWrapper = styled.div`
   width: 75%;
   margin: 0.6rem 0;
-  background-color: ${(props) => props.theme.gray};
+  background-color: ${(props) => props.theme.surface};
   border: 0.1rem solid ${(props) => props.theme.border};
   border-radius: 5px;
 `;
 
 const StyledButton = styled.button`
-  border: 0.1rem solid ${(props) => props.theme.blue};
+  border: 0.1rem solid ${(props) => props.theme.secondary};
   border-radius: 0;
   border-top-right-radius: 5px;
   height: 2rem;
   font-size: 1rem;
   width: 4.5rem;
-  color: ${(props) => props.theme.white};
-  background-color: ${(props) => props.theme.blue};
+  color: ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.secondary};
   :hover {
     cursor: pointer;
   }
 `;
 
 const StyledButtonDark = styled(StyledButton)`
-  background-color: ${(props) => props.theme.gray};
+  background-color: ${(props) => props.theme.surface};
   border-radius: 0;
   border-bottom-left-radius: 5px;
-  color: ${(props) => props.theme.blue};
-  border-color: ${(props) => props.theme.blue};
+  color: ${(props) => props.theme.secondary};
+  border-color: ${(props) => props.theme.secondary};
 `;
 
 function QuestionDetails() {

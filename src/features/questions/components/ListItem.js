@@ -8,14 +8,14 @@ import { upvoteQuestion, downvoteQuestion } from "../actions/questionsActions";
 
 const Container = styled.div`
   border: 0.1rem solid ${(props) => props.theme.border};
-  color: ${(props) => props.theme.black};
+  color: ${(props) => props.theme.onPrimary};
   border-radius: 5px;
   width: 100%;
   min-height: 7rem;
   height: auto;
   display: flex;
   flex-direction: column;
-  background-color: ${(props) => props.theme.gray};
+  background-color: ${(props) => props.theme.surface};
   margin: 1rem 0;
 `;
 
@@ -23,7 +23,7 @@ const Info = styled.div`
   display: flex;
   justify-content: space-evenly;
   border-top: 0.1rem solid ${(props) => props.theme.border};
-  color: ${(props) => props.theme.blue};
+  color: ${(props) => props.theme.secondary};
 `;
 
 const Wrapper = styled.div`
@@ -46,7 +46,7 @@ const StyledText = styled.p`
 
 const StyledNumber = styled.span`
   margin-left: 0.2rem;
-  color: ${(props) => props.theme.black};
+  color: ${(props) => props.theme.onPrimary};
 `;
 
 const Content = styled.div`

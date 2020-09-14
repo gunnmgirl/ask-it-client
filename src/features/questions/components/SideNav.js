@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledSideNav = styled.div`
-  background-color: ${(props) => props.theme.gray};
+  background-color: ${(props) => props.theme.surface};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,7 +27,7 @@ const SideNavColumn = styled.div`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: ${(props) => props.theme.black};
+  color: ${(props) => props.theme.onPrimary};
   display: flex;
   justify-content: center;
   margin: 0.6rem 0;
@@ -36,7 +36,7 @@ const StyledLink = styled(Link)`
 const Wrapper = styled.div`
   width: 100%;
   :hover {
-    background-color: ${(props) => props.theme.blueHover};
+    background-color: ${(props) => props.theme.onHover};
     border: 0.3px solid ${(props) => props.theme.border};
     border-right: none;
   }

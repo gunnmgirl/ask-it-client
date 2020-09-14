@@ -4,13 +4,13 @@ import { MessageSquare, User } from "react-feather";
 
 const Container = styled.div`
   border: 0.1rem solid ${(props) => props.theme.border};
-  color: ${(props) => props.theme.black};
+  color: ${(props) => props.theme.onPrimary};
   border-radius: 5px;
   height: 4rem;
   width: 16rem;
   display: flex;
   align-items: center;
-  background-color: ${(props) => props.theme.gray};
+  background-color: ${(props) => props.theme.surface};
   margin: 1rem 0.3rem;
 `;
 
@@ -33,7 +33,7 @@ const StyledUser = styled(User)`
 `;
 
 const StyledMessageSquare = styled(MessageSquare)`
-  color: ${(props) => props.theme.blue};
+  color: ${(props) => props.theme.secondary};
 `;
 
 function UserItem(props) {

@@ -24,9 +24,9 @@ const StyledButton = styled.button`
   height: 2rem;
   font-size: 1rem;
   width: 6rem;
-  color: ${(props) => props.theme.black};
+  color: ${(props) => props.theme.onPrimary};
   align-self: flex-end;
-  background-color: ${(props) => props.theme.gray};
+  background-color: ${(props) => props.theme.surface};
   :hover {
     cursor: pointer;
   }
@@ -38,8 +38,8 @@ const StyledTextarea = styled.textarea`
   min-height: 5rem;
   width: 100%;
   text-align: center;
-  background-color: ${(props) => props.theme.white};
-  color: ${(props) => props.theme.black};
+  background-color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.onPrimary};
   ::placeholder {
     font-size: 1rem;
     font-family: "Roboto", sans-serif;

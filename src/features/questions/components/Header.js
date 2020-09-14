@@ -10,7 +10,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  background-color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.primary};
   margin-bottom: 2rem;
 `;
 
@@ -19,7 +19,7 @@ const StyledUserIcon = styled(User)`
 `;
 
 const StyledLink = styled(Link)`
-  color: ${(props) => props.theme.black};
+  color: ${(props) => props.theme.onPrimary};
   text-decoration: none;
 `;
 

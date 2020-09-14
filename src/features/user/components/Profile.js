@@ -13,8 +13,8 @@ import Loading from "../../questions/components/Loading";
 import { getUser } from "../actions/userActions";
 
 const MainContainer = styled.div`
-  background-color: ${(props) => props.theme.white};
-  color: ${(props) => props.theme.black};
+  background-color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.onPrimary};
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto auto;
@@ -26,7 +26,7 @@ const MainContainer = styled.div`
 const StyledUserIcon = styled(User)`
   height: 22rem;
   width: 12rem;
-  color: ${(props) => props.theme.black};
+  color: ${(props) => props.theme.onPrimary};
   @media (min-width: 992px) {
     margin-right: 4rem;
   }
@@ -43,14 +43,14 @@ const Wrapper = styled.div`
 `;
 
 const StyledButton = styled.button`
-  border: 0.1rem solid ${(props) => props.theme.blue};
+  border: 0.1rem solid ${(props) => props.theme.secondary};
   font-size: 1rem;
   border-radius: 5px;
-  height: 2rem;
+  min-height: 2rem;
   width: 9rem;
   margin-right: 0.4rem;
-  color: ${(props) => props.theme.blue};
-  background-color: ${(props) => props.theme.gray};
+  color: ${(props) => props.theme.secondary};
+  background-color: ${(props) => props.theme.surface};
   :hover {
     cursor: pointer;
   }
@@ -66,9 +66,9 @@ const EditButton = styled(StyledButton)`
   @media (min-width: 768px) {
     align-self: flex-end;
   }
-  border-color: ${(props) => props.theme.blue};
-  color: ${(props) => props.theme.white};
-  background-color: ${(props) => props.theme.blue};
+  border-color: ${(props) => props.theme.secondary};
+  color: ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.secondary};
 `;
 
 const Container = styled.div`
@@ -77,7 +77,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 1rem 1rem;
-  background-color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.primary};
   @media (min-width: 768px) {
     flex-direction: row;
   }

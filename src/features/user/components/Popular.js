@@ -11,8 +11,8 @@ import { getMostPopular } from "../actions/userActions";
 import { clearPageCounter } from "../../questions/actions/questionsActions";
 
 const MainContainer = styled.div`
-  background-color: ${(props) => props.theme.white};
-  color: ${(props) => props.theme.black};
+  background-color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.onPrimary};
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto auto;
@@ -26,15 +26,12 @@ const List = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 2rem;
-  @media (min-width: 992px) {
+  @media (min-width: 768px) {
+    margin: 0 6rem;
+  }
+  @media (min-width: 1200px) {
     margin: 0 16rem;
   }
-`;
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
 
 const StyledP = styled.p`
@@ -59,7 +56,7 @@ function Popular() {
   return (
     <MainContainer>
       <SideNav />
-      <Container>
+      <div>
         <Header />
         {isLoading ? (
           <Loading />
@@ -73,7 +70,7 @@ function Popular() {
           </List>
         )}
         {!isLoading && users.length < totalUsers ? <LoadMoreButton /> : null}
-      </Container>
+      </div>
     </MainContainer>
   );
 }

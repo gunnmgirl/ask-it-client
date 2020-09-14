@@ -10,8 +10,8 @@ import ToggleTheme from "../../questions/components/ToggleTheme";
 
 const Container = styled.div`
   min-height: 100vh;
-  background-color: ${(props) => props.theme.white};
-  color: ${(props) => props.theme.black};
+  background-color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.onPrimary};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,26 +21,26 @@ const StyledForm = styled.form`
   margin: 2rem 0;
   display: flex;
   flex-direction: column;
-  color: ${(props) => props.theme.black};
+  color: ${(props) => props.theme.onPrimary};
   width: 50%;
 `;
 
 const StyledInput = styled.input`
-  background-color: ${(props) => props.theme.gray};
+  background-color: ${(props) => props.theme.surface};
   border: 1px solid ${(props) => props.theme.border};
-  color: ${(props) => props.theme.black};
+  color: ${(props) => props.theme.onPrimary};
   height: 2rem;
   margin: 0.4rem 0;
 `;
 
 const StyledText = styled.span`
-  color: ${(props) => props.theme.yellow};
+  color: ${(props) => props.theme.warning};
 `;
 
 const StyledButton = styled.button`
-  background-color: ${(props) => props.theme.blue};
-  color: ${(props) => props.theme.white};
-  border: 2px solid ${(props) => props.theme.blue};
+  background-color: ${(props) => props.theme.secondary};
+  color: ${(props) => props.theme.primary};
+  border: 2px solid ${(props) => props.theme.secondary};
   border-radius: 10px;
   width: 14rem;
   height: 2.2rem;
@@ -58,7 +58,7 @@ const Wrapper = styled.div`
 
 const StyledLink = styled(Link)`
   margin-left: 0.4rem;
-  color: ${(props) => props.theme.blue};
+  color: ${(props) => props.theme.secondary};
   text-decoration: none;
 `;
 

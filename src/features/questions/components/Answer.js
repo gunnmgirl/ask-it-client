@@ -6,10 +6,10 @@ import { useDispatch } from "react-redux";
 import { downvoteAnswer, upvoteAnswer } from "../actions/questionsActions";
 
 const Container = styled.div`
-  color: ${(props) => props.theme.black};
+  color: ${(props) => props.theme.onPrimary};
   display: flex;
   flex-direction: column;
-  background-color: ${(props) => props.theme.gray};
+  background-color: ${(props) => props.theme.surface};
 `;
 
 const Info = styled.div`
@@ -23,7 +23,7 @@ const Info = styled.div`
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  color: ${(props) => props.theme.blue};
+  color: ${(props) => props.theme.secondary};
   :hover {
     cursor: pointer;
   }
@@ -39,7 +39,7 @@ const StyledText = styled.p`
 
 const StyledNumber = styled.span`
   margin-left: 0.2rem;
-  color: ${(props) => props.theme.black};
+  color: ${(props) => props.theme.onPrimary};
 `;
 
 const Content = styled.div`

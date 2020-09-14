@@ -70,6 +70,12 @@ export default (state = INITIAL_STATE, action) => {
         questions: [...state.questions, ...action.payload.questions],
         totalQuestions: action.payload.totalQuestions,
       };
+    case "GET_MY_QUESTIONS_REQUEST":
+      return {
+        ...state,
+        error: false,
+        loading: true,
+      };
     case "GET_MY_QUESTIONS_FAILURE":
       return {
         ...state,
@@ -99,6 +105,13 @@ export default (state = INITIAL_STATE, action) => {
           answers: action.payload.answers,
         },
       };
+    case "GET_QUESTION_AND_ANSWERS_REQUEST":
+      return {
+        ...state,
+        loading: true,
+        error: false,
+      };
+
     case "GET_QUESTION_AND_ANSWERS_FAILURE":
       return {
         ...state,
@@ -209,6 +222,12 @@ export default (state = INITIAL_STATE, action) => {
         questions: [...state.questions, ...action.payload.questions],
         totalQuestions: action.payload.totalQuestions,
       };
+    case "GET_HOT_QUESTIONS_REQUEST":
+      return {
+        ...state,
+        loading: true,
+        error: false,
+      };
     case "GET_HOT_QUESTIONS_FAILURE":
       return {
         ...state,
@@ -222,6 +241,12 @@ export default (state = INITIAL_STATE, action) => {
         error: false,
         questions: [...state.questions, ...action.payload.questions],
         totalQuestions: action.payload.totalQuestions,
+      };
+    case "GET_LATEST_QUESTIONS_REQUEST":
+      return {
+        ...state,
+        loading: true,
+        error: false,
       };
     case "GET_LATEST_QUESTIONS_FAILURE":
       return {

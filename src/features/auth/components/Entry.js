@@ -9,8 +9,8 @@ const MainContainer = styled.div`
   display: grid;
   grid-template-columns: 0 1fr;
   min-height: 100vh;
-  background-color: ${(props) => props.theme.white};
-  color: ${(props) => props.theme.black};
+  background-color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.onPrimary};
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
   }
@@ -28,7 +28,7 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   margin: 1.2rem 0;
-  color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.primary};
   display: flex;
   align-items: center;
 `;
@@ -47,8 +47,8 @@ const MainWrapper = styled.div`
 `;
 
 const StyledHelpCircle = styled(HelpCircle)`
-  fill: ${(props) => props.theme.white};
-  color: ${(props) => props.theme.blue};
+  fill: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.secondary};
   align-self: flex-start;
 `;
 
@@ -57,9 +57,9 @@ const SignUp = styled.button`
   height: 2.2rem;
   font-size: 1rem;
   border-radius: 9999px;
-  background-color: ${(props) => props.theme.blue};
-  border: 1px solid ${(props) => props.theme.blue};
-  color: ${(props) => props.theme.white};
+  background-color: ${(props) => props.theme.secondary};
+  border: 1px solid ${(props) => props.theme.secondary};
+  color: ${(props) => props.theme.primary};
   margin-bottom: 0.8rem;
   :hover {
     cursor: pointer;
@@ -71,11 +71,11 @@ const LogIn = styled.button`
   height: 2.2rem;
   font-size: 1rem;
   border-radius: 9999px;
-  background-color: ${(props) => props.theme.white};
-  border: 1px solid ${(props) => props.theme.blue};
-  color: ${(props) => props.theme.blue};
+  background-color: ${(props) => props.theme.primary};
+  border: 1px solid ${(props) => props.theme.secondary};
+  color: ${(props) => props.theme.secondary};
   :hover {
-    background-color: ${(props) => props.theme.blueHover};
+    background-color: ${(props) => props.theme.onHover};
     cursor: pointer;
   }
 `;

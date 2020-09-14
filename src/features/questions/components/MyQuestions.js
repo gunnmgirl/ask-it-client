@@ -10,18 +10,27 @@ import Loading from "./Loading";
 import { getMyQuestions, clearPageCounter } from "../actions/questionsActions";
 
 const MainContainer = styled.div`
-  background-color: ${(props) => props.theme.white};
-  color: ${(props) => props.theme.black};
+  background-color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.onPrimary};
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 5fr;
+  grid-template-rows: auto auto;
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 5fr;
+  }
 `;
 
 const List = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 16rem;
+  margin: 0 2rem;
+  @media (min-width: 768px) {
+    margin: 0 6rem;
+  }
+  @media (min-width: 1200px) {
+    margin: 0 16rem;
+  }
 `;
 
 const Container = styled.div`

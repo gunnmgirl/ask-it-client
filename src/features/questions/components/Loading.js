@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
-  color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.onPrimary};
   justify-content: center;
   margin: 4rem 0;
 `;
@@ -12,7 +12,7 @@ const Container = styled.div`
 function Loading() {
   return (
     <Container>
-      <Loader size="4rem" />
+      <Loader size="3.5rem" />
     </Container>
   );
 }

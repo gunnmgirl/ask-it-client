@@ -8,8 +8,8 @@ import { toggleDark, toggleLight } from "../../../themes/actions/themesActions";
 const StyledIcon = styled.div`
   display: flex;
   justify-content: flex-end;
-  color: ${(props) => props.theme.black};
-  background-color: ${(props) => props.theme.white};
+  color: ${(props) => props.theme.onPrimary};
+  background-color: ${(props) => props.theme.primary};
   padding: 1rem 2rem;
 `;
 

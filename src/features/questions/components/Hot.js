@@ -10,8 +10,8 @@ import Loading from "./Loading";
 import { getHotQuestions, clearPageCounter } from "../actions/questionsActions";
 
 const MainContainer = styled.div`
-  background-color: ${(props) => props.theme.white};
-  color: ${(props) => props.theme.black};
+  background-color: ${(props) => props.theme.primary};
+  color: ${(props) => props.theme.onPrimary};
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto auto;
