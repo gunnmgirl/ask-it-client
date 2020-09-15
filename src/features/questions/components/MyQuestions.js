@@ -14,7 +14,7 @@ const MainContainer = styled.div`
   color: ${(props) => props.theme.onPrimary};
   min-height: 100vh;
   display: grid;
-  grid-template-rows: auto auto;
+  grid-template-rows: auto 1fr;
   @media (min-width: 768px) {
     grid-template-columns: 1fr 5fr;
   }

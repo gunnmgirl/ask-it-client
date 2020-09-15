@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { Home, User } from "react-feather";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Home, User, LogOut } from "react-feather";
+import { Link, useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import ToggleTheme from "../../../components/ToggleTheme";
+import { logout } from "../../auth/actions/authActions";
 
 const Container = styled.div`
   display: flex;
@@ -21,10 +22,19 @@ const StyledUserIcon = styled(User)`
 const StyledLink = styled(Link)`
   color: ${(props) => props.theme.onPrimary};
   text-decoration: none;
+  padding: 0;
+`;
+
+const StyledLogOut = styled(LogOut)`
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 function Header() {
   const userId = useSelector((state) => state.auth.userId);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   return (
     <Container>
@@ -38,6 +48,15 @@ function Header() {
       >
         <StyledUserIcon />
       </StyledLink>
+      <div>
+        <StyledLogOut
+          onClick={() => {
+            dispatch(logout());
+            localStorage.removeItem("token");
+            history.push("/");
+          }}
+        />
+      </div>
       <ToggleTheme />
     </Container>
   );

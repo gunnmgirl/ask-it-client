@@ -139,6 +139,11 @@ export default (state = INITIAL_STATE, action) => {
           }
           return question;
         }),
+        question: {
+          ...state.question,
+          upvotes: { count: action.payload.upvotes },
+          downvotes: { count: action.payload.downvotes },
+        },
       };
     case "UPVOTE_QUESTION_FAILURE":
       return {
@@ -158,6 +163,11 @@ export default (state = INITIAL_STATE, action) => {
           }
           return question;
         }),
+        question: {
+          ...state.question,
+          upvotes: { count: action.payload.upvotes },
+          downvotes: { count: action.payload.downvotes },
+        },
       };
     case "DOWNVOTE_QUESTION_FAILURE":
       return {

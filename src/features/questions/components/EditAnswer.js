@@ -43,6 +43,11 @@ const Wrapper = styled.div`
   justify-content: center;
 `;
 
+const StyledText = styled.span`
+  color: ${(props) => props.theme.warning};
+  margin: 0.2rem 0;
+`;
+
 function EditAnswer({ answerId, handleOnSubmit, initialValue }) {
   const dispatch = useDispatch();
 
@@ -73,6 +78,9 @@ function EditAnswer({ answerId, handleOnSubmit, initialValue }) {
         value={formik.values.body}
         onBlur={formik.handleBlur}
       />
+      {formik.errors.body && formik.touched.body ? (
+        <StyledText>{formik.errors.body}</StyledText>
+      ) : null}
       <Wrapper>
         <StyledButton type="submit" onClick={formik.handleSubmit}>
           Edit

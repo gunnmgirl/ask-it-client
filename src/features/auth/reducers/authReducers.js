@@ -17,6 +17,12 @@ export default (state = INITIAL_STATE, action) => {
         loading: false,
         error: false,
       };
+    case "SIGNUP_REQUEST":
+      return {
+        ...state,
+        loading: true,
+        error: false,
+      };
     case "LOGIN_FAILURE":
       return {
         ...state,
@@ -31,12 +37,14 @@ export default (state = INITIAL_STATE, action) => {
         isLoggedIn: true,
         userId: action.payload._id,
       };
-    case "LOGOUT":
+    case "LOGIN_REQUEST":
       return {
         ...state,
-        isLoggedIn: false,
-        userId: "",
+        loading: true,
+        error: false,
       };
+    case "LOGOUT":
+      return INITIAL_STATE;
     default:
       return state;
   }

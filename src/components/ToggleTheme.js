@@ -11,6 +11,9 @@ const StyledIcon = styled.div`
   color: ${(props) => props.theme.onPrimary};
   background-color: ${(props) => props.theme.primary};
   padding: 1rem 2rem;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 function ToggleTheme() {
