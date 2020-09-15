@@ -46,9 +46,9 @@ const StyledTextarea = styled.textarea`
   margin: 0.4rem 0;
   background-color: ${(props) => props.theme.primary};
   color: ${(props) => props.theme.onPrimary};
+  font-family: "Roboto", sans-serif;
   ::placeholder {
     font-size: 1rem;
-    font-family: "Roboto", sans-serif;
   }
 `;
 

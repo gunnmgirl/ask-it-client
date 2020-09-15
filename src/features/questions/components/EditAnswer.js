@@ -32,6 +32,7 @@ const StyledTextarea = styled.textarea`
   text-align: center;
   margin: 0.2rem 0;
   width: 100%;
+  font-family: "Roboto", sans-serif;
   background-color: ${(props) => props.theme.surface};
   color: ${(props) => props.theme.onPrimary};
   border: 0.1rem solid ${(props) => props.theme.border};

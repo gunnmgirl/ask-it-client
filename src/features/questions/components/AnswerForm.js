@@ -39,11 +39,11 @@ const StyledTextarea = styled.textarea`
   margin: 0.4rem 0;
   width: 100%;
   text-align: center;
+  font-family: "Roboto", sans-serif;
   background-color: ${(props) => props.theme.primary};
   color: ${(props) => props.theme.onPrimary};
   ::placeholder {
     font-size: 1rem;
-    font-family: "Roboto", sans-serif;
   }
 `;
 
