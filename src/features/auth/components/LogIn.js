@@ -1,12 +1,13 @@
 import React from "react";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import { login } from "../actions/authActions";
 import ToggleTheme from "../../../components/ToggleTheme";
+import Loading from "../../../components/Loading";
 
 const Container = styled.div`
   min-height: 100vh;
@@ -69,6 +70,7 @@ const StyledHeader = styled.h2`
 
 function LogIn() {
   const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.auth.loading);
 
   const validationSchema = Yup.object().shape({
     password: Yup.string().required("Password is required"),
@@ -97,39 +99,43 @@ function LogIn() {
           <p>Don’t have an account yet?</p>
           <StyledLink to="/signup">Sign up</StyledLink>
         </Wrapper>
-        <StyledForm onSubmit={formik.handleSubmit}>
-          <label htmlFor="email">Email</label>
-          <StyledInput
-            type="email"
-            name="email"
-            id="email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
-          {formik.errors.email && formik.touched.email ? (
-            <StyledText>{formik.errors.email}</StyledText>
-          ) : null}
-          <label htmlFor="password">Password</label>
-          <StyledInput
-            type="password"
-            name="password"
-            id="password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-          />
-          {formik.errors.password && formik.touched.password ? (
-            <StyledText>{formik.errors.password}</StyledText>
-          ) : null}
-          <StyledButton
-            type="submit"
-            disabled={formik.isSubmitting}
-            onClick={formik.handleSubmit}
-          >
-            Log in
-          </StyledButton>
-        </StyledForm>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <StyledForm onSubmit={formik.handleSubmit}>
+            <label htmlFor="email">Email</label>
+            <StyledInput
+              type="email"
+              name="email"
+              id="email"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+            />
+            {formik.errors.email && formik.touched.email ? (
+              <StyledText>{formik.errors.email}</StyledText>
+            ) : null}
+            <label htmlFor="password">Password</label>
+            <StyledInput
+              type="password"
+              name="password"
+              id="password"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+            />
+            {formik.errors.password && formik.touched.password ? (
+              <StyledText>{formik.errors.password}</StyledText>
+            ) : null}
+            <StyledButton
+              type="submit"
+              disabled={formik.isSubmitting}
+              onClick={formik.handleSubmit}
+            >
+              Log in
+            </StyledButton>
+          </StyledForm>
+        )}
       </Container>
     </>
   );
