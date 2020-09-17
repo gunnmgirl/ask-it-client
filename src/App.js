@@ -11,7 +11,6 @@ import Latest from "./features/questions/components/Latest";
 import Popular from "./features/user/components/Popular";
 import Profile from "./features/user/components/Profile";
 import Hot from "./features/questions/components/Hot";
-
 import MyQuestions from "./features/questions/components/MyQuestions";
 import QuestionDetails from "./features/questions/components/QuestionDetails";
 

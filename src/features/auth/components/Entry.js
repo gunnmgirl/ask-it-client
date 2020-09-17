@@ -28,7 +28,10 @@ const MainWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0.4rem 10rem;
+  margin: 0.4rem 2rem;
+  @media (min-width: 768px) {
+    margin: 0.4rem 10rem;
+  }
 `;
 
 const SignUp = styled.button`
