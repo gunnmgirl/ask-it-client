@@ -4,8 +4,8 @@ const INITIAL_STATE = {
   page: 0,
   question: {
     body: "",
-    upvotes: 0,
-    downvotes: 0,
+    upvotes: { count: 0, users: [] },
+    downvotes: { count: 0, users: [] },
     answers: [],
     creator: null,
   },
@@ -25,9 +25,9 @@ export default (state = INITIAL_STATE, action) => {
         question: {
           ...state.question,
           answers: state.question.answers.map((answer) => {
-            if (answer._id === action.payload.answerId) {
-              answer.upvotes.count = action.payload.upvotes;
-              answer.downvotes.count = action.payload.downvotes;
+            if (answer._id === action.payload.answer._id) {
+              answer.upvotes = action.payload.answer.upvotes;
+              answer.downvotes = action.payload.answer.downvotes;
             }
             return answer;
           }),
@@ -47,9 +47,9 @@ export default (state = INITIAL_STATE, action) => {
         question: {
           ...state.question,
           answers: state.question.answers.map((answer) => {
-            if (answer._id === action.payload.answerId) {
-              answer.upvotes.count = action.payload.upvotes;
-              answer.downvotes.count = action.payload.downvotes;
+            if (answer._id === action.payload.answer._id) {
+              answer.upvotes = action.payload.answer.upvotes;
+              answer.downvotes = action.payload.answer.downvotes;
             }
             return answer;
           }),
@@ -133,16 +133,16 @@ export default (state = INITIAL_STATE, action) => {
         loading: false,
         error: false,
         questions: state.questions.map((question) => {
-          if (question._id === action.payload.questionId) {
-            question.upvotes.count = action.payload.upvotes;
-            question.downvotes.count = action.payload.downvotes;
+          if (question._id === action.payload.question._id) {
+            question.upvotes = action.payload.question.upvotes;
+            question.downvotes = action.payload.question.downvotes;
           }
           return question;
         }),
         question: {
           ...state.question,
-          upvotes: { count: action.payload.upvotes },
-          downvotes: { count: action.payload.downvotes },
+          upvotes: action.payload.question.upvotes,
+          downvotes: action.payload.question.downvotes,
         },
       };
     case "UPVOTE_QUESTION_FAILURE":
@@ -157,16 +157,16 @@ export default (state = INITIAL_STATE, action) => {
         loading: false,
         error: false,
         questions: state.questions.map((question) => {
-          if (question._id === action.payload.questionId) {
-            question.upvotes.count = action.payload.upvotes;
-            question.downvotes.count = action.payload.downvotes;
+          if (question._id === action.payload.question._id) {
+            question.upvotes = action.payload.question.upvotes;
+            question.downvotes = action.payload.question.downvotes;
           }
           return question;
         }),
         question: {
           ...state.question,
-          upvotes: { count: action.payload.upvotes },
-          downvotes: { count: action.payload.downvotes },
+          upvotes: action.payload.question.upvotes,
+          downvotes: action.payload.question.downvotes,
         },
       };
     case "DOWNVOTE_QUESTION_FAILURE":

@@ -44,8 +44,7 @@ function UserItem(props) {
       <StyledUser size="3rem" strokeWidth="1.5px" />
       <Wrapper>
         <StyledText>
-          {user.firstName}
-          {user.lastName}
+          {user.firstName} {user.lastName}
         </StyledText>
         <StyledWrapper>
           <StyledMessageSquare />

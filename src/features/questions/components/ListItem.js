@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { ThumbsUp, ThumbsDown, MessageSquare } from "react-feather";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { upvoteQuestion, downvoteQuestion } from "../actions/questionsActions";
 
@@ -65,9 +65,18 @@ const Content = styled.div`
   }
 `;
 
+const StyledThumbsDown = styled(ThumbsDown)`
+  fill: ${(props) => props.theme.secondary};
+`;
+
+const StyledThumbsUp = styled(ThumbsUp)`
+  fill: ${(props) => props.theme.secondary};
+`;
+
 function ListItem({ question }) {
   const history = useHistory();
   const dispatch = useDispatch();
+  const userId = useSelector((state) => state.auth.userId);
 
   return (
     <Container>
@@ -76,21 +85,45 @@ function ListItem({ question }) {
       </Content>
       <Info>
         <Wrapper>
-          <ThumbsUp
-            size="21"
-            onClick={() =>
-              dispatch(upvoteQuestion({ questionId: question._id }))
-            }
-          />
+          {question.upvotes.users.length > 0 &&
+          question.upvotes.users.find((user) => user === userId) ? (
+            <StyledThumbsUp
+              size="21"
+              key={question._id}
+              onClick={() =>
+                dispatch(upvoteQuestion({ questionId: question._id }))
+              }
+            />
+          ) : (
+            <ThumbsUp
+              size="21"
+              key={question._id}
+              onClick={() =>
+                dispatch(upvoteQuestion({ questionId: question._id }))
+              }
+            />
+          )}
           <StyledNumber>{question.upvotes.count}</StyledNumber>
         </Wrapper>
         <Wrapper>
-          <ThumbsDown
-            size="21"
-            onClick={() =>
-              dispatch(downvoteQuestion({ questionId: question._id }))
-            }
-          />
+          {question.downvotes.users.length > 0 &&
+          question.downvotes.users.find((user) => user === userId) ? (
+            <StyledThumbsDown
+              size="21"
+              key={question._id}
+              onClick={() =>
+                dispatch(downvoteQuestion({ questionId: question._id }))
+              }
+            />
+          ) : (
+            <ThumbsDown
+              size="21"
+              key={question._id}
+              onClick={() =>
+                dispatch(downvoteQuestion({ questionId: question._id }))
+              }
+            />
+          )}
           <StyledNumber>{question.downvotes.count}</StyledNumber>
         </Wrapper>
         <Wrapper>

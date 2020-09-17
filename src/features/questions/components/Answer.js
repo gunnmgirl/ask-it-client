@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ThumbsUp, ThumbsDown } from "react-feather";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { downvoteAnswer, upvoteAnswer } from "../actions/questionsActions";
 
@@ -55,8 +55,18 @@ const Content = styled.div`
   hyphens: auto;
 `;
 
+const StyledThumbsDown = styled(ThumbsDown)`
+  fill: ${(props) => props.theme.secondary};
+`;
+
+const StyledThumbsUp = styled(ThumbsUp)`
+  fill: ${(props) => props.theme.secondary};
+`;
+
 function Answer({ answer }) {
   const dispatch = useDispatch();
+  const userId = useSelector((state) => state.auth.userId);
+
   return (
     <Container>
       <Content>
@@ -64,17 +74,37 @@ function Answer({ answer }) {
       </Content>
       <Info>
         <Wrapper>
-          <ThumbsUp
-            onClick={() => dispatch(upvoteAnswer({ answerId: answer._id }))}
-            size="21"
-          />
+          {answer.upvotes.users.length > 0 &&
+          answer.upvotes.users.find((user) => user === userId) ? (
+            <StyledThumbsUp
+              size="21"
+              key={answer._id}
+              onClick={() => dispatch(upvoteAnswer({ answerId: answer._id }))}
+            />
+          ) : (
+            <ThumbsUp
+              size="21"
+              key={answer._id}
+              onClick={() => dispatch(upvoteAnswer({ answerId: answer._id }))}
+            />
+          )}
           <StyledNumber>{answer.upvotes.count}</StyledNumber>
         </Wrapper>
         <Wrapper>
-          <ThumbsDown
-            onClick={() => dispatch(downvoteAnswer({ answerId: answer._id }))}
-            size="21"
-          />
+          {answer.downvotes.users.length > 0 &&
+          answer.downvotes.users.find((user) => user === userId) ? (
+            <StyledThumbsDown
+              size="21"
+              key={answer._id}
+              onClick={() => dispatch(downvoteAnswer({ answerId: answer._id }))}
+            />
+          ) : (
+            <ThumbsDown
+              size="21"
+              key={answer._id}
+              onClick={() => dispatch(downvoteAnswer({ answerId: answer._id }))}
+            />
+          )}
           <StyledNumber>{answer.downvotes.count}</StyledNumber>
         </Wrapper>
       </Info>
